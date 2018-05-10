@@ -1,0 +1,93 @@
+
+小技巧汇总
+
+小佛爷13 发布于 2016-02-25 14:22:25
+类型：
+原创 - 随笔
+分类：
+HTML/CSS - 技巧
+二维码：
+
+?
+屋主原创，版权归 小佛爷13 所有！如需转载，必须在页面明显位置给出原文链接！商业用途请
+联系我
+！
+浏览 543
+笔记人气
+
+    浏览：543
+    点赞：1
+    收藏：2
+    评论：0
+
+//============================= HTML =================================//
+1.html拨号功能
+   <a href="tel:400-0000-1111">点击</a>
+   这是html实现的方法，在安卓和iphone上的浏览器基本都可以使用。
+   在实际使用过程中发现，如果内嵌到手机app中，iphone还可使用，但是android不可用，原因不太清楚，应该和android app的设置有关系，如果android无法修改，那需要与产品和ios/android工程师协商出解决办法，一种方法是，后端与android/ios工程师约定一个固定参数，前端进行传递，使app自己调用其本地的拨打电话服务；另一种是，进行文字说明，并注明电话，如果拨打不出去电话，就使用户可以手动复制粘贴进行拨打电话。
+
+
+//============================= CSS =================================//
+1.超出显示省略号：
+    (1)单行文本：
+   p{
+      width:200px;
+      overflow : hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  (2)多行文本--仅限移动端或者webkit内核：
+   p{
+      width:200px;
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    备注： -webkit-line-clamp: 2; 设置几行显示省略号
+   (3)多行文本 -- pc支持，
+    使用js插件，jQuery.dotdotdot.js  插件
+    下载地址：jQuery.dotdotdot    使用方法：
+        $(document).ready(function() {
+            $("p").dotdotdot({});
+        });
+
+2.overflow-y:scroll;      --在iphone 上滚动不灵敏，会卡顿，解决方法：
+    在滚动元素上添加：
+    div{
+         overflow-y:scroll;
+         -webkit-overflow-scrolling:touch;
+    }
+    添加后，就好使了。
+
+3. 在iphone上，有点击事件的元素，会出现点不了的情况，解决方法：
+    span{
+        cursor:pointer;
+    }
+    添加cursor:pointer; ，使其成为一个系统认为的可被点击的元素；
+
+4.在手机上，有点击事件的元素，当点击时，会出现黑色的大块，解决方法：
+   span{
+       -webkit-appearance:none;
+   }
+   添加后，就好使了。
+
+5.手机上，当我们去掉点击黑色大块后，希望添加我们可以自定义的点击效果，解决方法：
+   a:active{
+       color:red;
+   }
+   假如上面的代码是我们的希望的点击效果，在手机上测试，发现，android好使，iphone不好使，
+   再添加：
+   document.body.addEventListener('touchstart', function () {});
+   加一个监听事件，添加上，就好使了。
+   
+
+//============================= JS =================================//
+1.后退一页 --类似浏览器的后退按钮：
+    window.history.back(-1);
+    备注：最近一直在找如何在点击浏览器的后退按钮，实现刷新页面。。。结果：尚未发现。各位大神有了解的可以告诉我哈。
+
+2.window.screen.height()  在三星手机上有兼容性问题，
+   解决：$(window).height();   
+   备注：jquery 在内部如何实现 heght ，尚未了解，待补。。。 

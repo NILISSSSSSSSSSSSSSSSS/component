@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script> 
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script> 
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/modules/data.js"></script>
+ <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+	<script> //左侧Javascript代码 </script>
+	<script>
+    $(document).ready(function() {
+            var chart888; // 全局变量
+            var categories=['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11', '12']
+        chart888= new Highcharts.Chart({ 
+            chart: { 
+                renderTo: 'tendency_chart', //图表放置的容器，DIV 
+                defaultSeriesType: 'line'   //图表类型line(折线图),
+                // zoomType: 'x' //x轴方向可以缩放
+            }, 
+            credits: { 
+                enabled: false   //右下角不显示LOGO 
+            }, 
+            title: { 
+                text: '' //图表标题 
+            }, 
+            subtitle: { 
+                text: ''  //副标题 
+            }, 
+            xAxis: {  //x轴 
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', 
+        '11', '12'], //x轴标签名称 
+                gridLineWidth: 1, //设置数线网格宽度为1 
+                lineWidth: 2,  //基线宽度 
+                labels:{y:10}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            // xAxis: {             
+            //  min:0,             
+            //  max:12,             
+            //  tickInterval:1         
+            // },         
+            // yAxis: {             
+            //  min:0,             
+            //  lineWidth:1,             
+            //  minPadding:0,             
+            //  plotLines: [{                 
+            //      value: 0,                 
+            //      width: 1,                 
+            //      color: '#808080'             
+            //  }]         
+            // }, 
+            yAxis: {  //y轴 
+                title: {text: '次数/次'}, //标题 
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性  
+             //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+             minPadding:0, 
+             startOnTick:false 
+            },
+            labels: {                     
+                formatter: function() {                         
+                    return categories[this.value];                     
+                }                 
+            },
+            xAxis: {                       
+                labels: {                     
+                    formatter: function() {                         
+                        return categories[this.value];                     
+                    }                 
+                },             
+                tickInterval:1          
+            }, 
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#EDFAFE',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#EDFAFE'
+                    }
+                }
+            },
+            legend: {  //图例 
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical） 
+                backgroundColor: '#ffc', //图例背景色 
+                align: 'left',  //图例水平对齐方式 
+                verticalAlign: 'top',  //图例垂直对齐方式 
+                x: 100,  //相对X位移 
+                y: 70,   //相对Y位移 
+                floating: true, //设置可浮动 
+                shadow: true  //设置阴影 
+            }, 
+            exporting: { 
+                enabled: true  //设置导出按钮不可用 
+            }, 
+            series: [{  //数据列 
+                name: '年对开锁业务对比', 
+                data: [77,0,118,15,34,24,100,72,32,42,43,15] 
+            },  
+            ]
+        }); 
+    })
+</script>
+</head>
+<body>
+	<div id="tendency_chart"></div>
+</body>
+</html>

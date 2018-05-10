@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="input1" onchange="addPhoto('input1')"/>
+<script>引入js</script>
+<script>
+    function addPhoto(inputId){
+        moreImgUpload(document.getElementById(inputId).files,{quality:0.7})
+                .then(res => {
+
+        })
+    .catch(err => {
+
+        });
+    }
+
+</script>
+</body>
+</html>

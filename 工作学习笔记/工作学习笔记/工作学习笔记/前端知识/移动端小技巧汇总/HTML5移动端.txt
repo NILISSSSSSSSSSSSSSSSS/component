@@ -1,0 +1,60 @@
+HTML5移动端
+
+syhuang 发布于 前天 10:40类型：原创 - 随笔分类：手机移动 - 待整理二维码：?屋主原创，版权归 syhuang 所有！如需转载，必须在页面明显位置给出原文链接！商业用途请 联系我！
+浏览
+246
+笔记人气浏览：246点赞：0收藏：0评论：0
+重重置样式
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+}
+table {
+        border-collapse: collapse;
+        border-spacing: 0
+}
+img {
+        max-width: 100%;
+        vertical-align: middle;
+        border: 0;
+        -ms-interpolation-mode: bicubic;
+        -webkit-touch-callout: none
+}
+:focus {
+        outline: 0
+}
+input {
+        outline: 0;
+        -webkit-box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: none
+}
+1.使用rem布局，适配各个设备的需求
+定义html 
+html {
+        font-size: 62.5%
+}
+
+@media only screen and (min-width:481px) {
+        html {
+                font-size: 94%!important
+        }
+}
+
+@media only screen and (min-width:561px) {
+        html {
+                font-size: 109%!important
+        }
+}
+
+@media only screen and (min-width:641px) {
+        html {
+                font-size: 125%!important
+        }
+
+        body {
+                max-width: 640px
+        }
+}

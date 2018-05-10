@@ -1,0 +1,23 @@
+1：html input select等控件宽度对不齐？请使用box-sizing。
+  今天终于明白为什么表单元素的宽度经常对不齐了，原来是计算的问题。
+
+  为元素设置：box-sizing: border-box;，则表明width的宽度为内容本身宽度+padding+border（高度一样）
+  为元素设置：box-sizing: content-box;，（默认就是这个），则表明width的宽度就是内容本身的宽度，padding以外的再另算。
+  而input、select默认的样式是不同的，所以就造成了width设置的一样，但就是对不齐。全部设成border-box就省事了。
+（IE8及以上版本支持。）
+
+2: jQuery事件绑定.on()简要概述及应用: http://www.jquerycn.cn/a_5346
+
+3: js中事件绑定,$("body").on("click")与$("").click()区别: http://ask.csdn.net/questions/162645
+
+4: jQuery.trigger() 函数详解: http://www.365mini.com/page/jquery-trigger.htm
+
+5: jQuery $.each用法: http://www.cnblogs.com/mabelstyle/archive/2013/02/19/2917260.html
+
+6: jQuery之动画效果: http://www.cnblogs.com/kissdodog/archive/2012/12/08/2808799.html
+
+7: 说说JSON和JSONP，也许你会豁然开朗，含jQuery用例:
+ http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html
+
+8: 聊聊如何像jsonp一样提交post跨域请求:
+ http://ued.fanxing.com/post-like-jsonp/

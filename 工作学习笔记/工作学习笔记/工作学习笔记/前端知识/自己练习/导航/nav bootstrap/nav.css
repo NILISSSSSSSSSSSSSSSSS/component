@@ -1,0 +1,23 @@
+header {
+	height: 60px;
+}
+.header-title {
+	font-size: 20px;
+	line-height: 30px;
+}
+.sub-nav {
+	width: 360px;
+}
+.sub-nav li {
+	float: left;
+}
+.sub-nav li:nth-last-child(1) {
+	margin-bottom: 15px;
+}
+.nav-title {
+	width: 100%;
+}
+.sub-nav .nav-line {
+	width: 100%;
+	display: block;
+}

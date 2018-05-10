@@ -1,0 +1,1027 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <title>昆山开锁行业信息管理系统</title>
+    <link rel="stylesheet" media="all" href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--日期插件-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.min.css">
+    <!--图片文件插件-->
+    <link href="http://cdn.bootcss.com/bootstrap-fileinput/4.3.1/css/fileinput.min.css" rel="stylesheet">
+    <!--    <link type="text/css" rel="stylesheet" href="css/common.css">
+        <link type="text/css" rel="stylesheet" href="css/information-statistics.css">
+        <link type="text/css" rel="stylesheet" href="css/personnel-audit.css">-->
+</head>
+<body>
+<!--头部-->
+<nav class="navbar nav-header navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand logo" href="#">
+                昆山开锁行业管理系统
+            </a>
+        </div>
+        <div class="navbar-footer"></div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <!--侧边导航-->
+        <div class="col-md-2">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a class="dropdown-toggle" data-toggle="tab" role="button" aria-haspopup="true" aria-expanded="false" href="#information-statistics">开锁信息统计</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        备案审核管理
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a data-toggle="tab" href="#personnel-audit">企业备案审核</a></li>
+                        <li><a data-toggle="tab" href="#review-details">开锁人员审核</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a class="dropdown-toggle" data-toggle="tab" role="button" aria-haspopup="true" aria-expanded="false" href="#">开锁企业管理</a></li>
+                <li role="presentation"><a class="dropdown-toggle" data-toggle="tab" role="button" aria-haspopup="true" aria-expanded="false" href="#">开锁人员管理</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        开锁交易管理
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a data-toggle="tab" href="#trading-information">开锁交易信息</a></li>
+                        <li><a data-toggle="tab" href="#">个人交易统计</a></li>
+                        <li><a data-toggle="tab" href="#">企业交易统计</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a data-toggle="tab" href="#">胁迫预警管理</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        消息通知管理
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a data-toggle="tab" href="#">消息发布</a></li>
+                        <li><a data-toggle="tab" href="#news-release">消息查询</a></li>
+                        <li><a data-toggle="tab" href="#">反馈查询</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a data-toggle="tab" href="#">开锁收费管理</a></li>
+                <li role="presentation"><a data-toggle="tab" href="#">系统操作日志</a></li>
+            </ul>
+        </div>
+        <!--中间部分-->
+        <div class="col-md-10 main-content">
+            <!--主题内容-->
+            <div class="tab-content">
+                <div class="tab-pane active content-wrap" id="information-statistics">
+                    <div class="statistical-figure">
+                        <div class="col-md-6" >
+                            <div id="graph"></div>
+                            <div id="histogram"></div>
+                        </div>
+                        <div class="col-md-6" >
+                            <div id="pie-chart-1" class="col-md-6"></div>
+                            <div id="pie-chart-2" class="col-md-6"></div>
+                            <div id="pie-chart-3" class="col-md-6"></div>
+                            <div id="pie-chart-4" class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">开锁交易信息</div>
+                            <!-- List group -->
+                            <div class="list-group trading-info">
+                                <a href="#" class="list-group-item">
+                                    <span class="glyphicon glyphicon-chevron-right pull-right info-icon"></span>
+                                    <p class="list-group-item-text">2016-03-23 11:46:07</p>
+                                    <h4 class="list-group-item-heading">开锁人员(李大江9)新增一笔业务(门锁)</h4>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <span class="glyphicon glyphicon-chevron-right pull-right info-icon"></span>
+                                    <p class="list-group-item-text">2016-03-23 11:46:07</p>
+                                    <h4 class="list-group-item-heading">开锁人员(李大江9)新增一笔业务(门锁)</h4>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <span class="glyphicon glyphicon-chevron-right pull-right info-icon"></span>
+                                    <p class="list-group-item-text">2016-03-23 11:46:07</p>
+                                    <h4 class="list-group-item-heading">开锁人员(李大江9)新增一笔业务(门锁)</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">差评统计(2星及以下)</div>
+                            <!-- List group -->
+                            <div class="list-group trading-info">
+                                <a href="#" class="list-group-item">
+                                    <span class="glyphicon glyphicon-star pull-right bad-received"></span>
+                                    <span class="glyphicon glyphicon-star pull-right well-received"></span>
+                                    <span class="glyphicon glyphicon-star pull-right well-received"></span>
+                                    <p class="list-group-item-text">2016-03-23 11:46:07</p>
+                                    <h4 class="list-group-item-heading">开锁人员(李大江9)新增一笔业务(门锁)</h4>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <span class="glyphicon glyphicon-star pull-right bad-received"></span>
+                                    <span class="glyphicon glyphicon-star pull-right well-received"></span>
+                                    <span class="glyphicon glyphicon-star pull-right well-received"></span>
+                                    <p class="list-group-item-text">2016-03-23 11:46:07</p>
+                                    <h4 class="list-group-item-heading">开锁人员(李大江9)新增一笔业务(门锁)</h4>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <span class="glyphicon glyphicon-star pull-right bad-received"></span>
+                                    <span class="glyphicon glyphicon-star pull-right well-received"></span>
+                                    <span class="glyphicon glyphicon-star pull-right well-received"></span>
+                                    <p class="list-group-item-text">2016-03-23 11:46:07</p>
+                                    <h4 class="list-group-item-heading">开锁人员(李大江9)新增一笔业务(门锁)</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane content-wrap" id="personnel-audit">
+                    <h5>企业备案审核</h5>
+                    <form class="form-record-review">
+                        <div class="form-group col-md-4">
+                            <label>企业类型：</label>
+                            <select class="form-control">
+                                <option value="">所有</option>
+                                <option value="国有独资公司">国有独资公司</option>
+                                <option value="有限责任公司">有限责任公司</option>
+                                <option value="股份有限公司">股份有限公司</option>
+                                <option value="个体工商户">个体工商户</option>
+                                <option value="个人独资企业">个人独资企业</option>
+                                <option value="私营合伙企业">私营合伙企业</option>
+                                <option value="外资企业">外资企业</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>经营状态：</label>
+                            <select class="form-control">
+                                <option value="">所有</option>
+                                <option value="营业">营业</option>
+                                <option value="续存">续存</option>
+                                <option value="停业">停业</option>
+                                <option value="清算">清算</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>企业名称：</label>
+                            <select class="form-control">
+                                <option value="">所有</option>
+                                <option value="付锁匠开锁服务部">付锁匠开锁服务部</option>
+                                <option value="华翔开锁服务部">华翔开锁服务部</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="business-license">营业执照：</label>
+                            <input type="text" class="form-control" id="business-license" placeholder="请输入营业执照">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="legal-person">法人：</label>
+                            <input type="text" class="form-control" id="legal-person" placeholder="请输入法人">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="police-station">所属派出所：</label>
+                            <input type="text" class="form-control" id="police-station" placeholder="请输入所属派出所">
+                        </div>
+                        <div class="form-group record-review-submit">
+                            <button type="button" class="btn btn-info">查询</button>
+                            <button type="button" class="btn btn-warning">重置</button>
+                        </div>
+                    </form>
+                    <div class="table-responsive record-review-wrap">
+                        <table class="table table-hover table-striped table-bordered text-center">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>从业人员姓名</th>
+                                <th>证件编号</th>
+                                <th>手机号码</th>
+                                <th>所属企业</th>
+                                <th>登记时间</th>
+                                <th>从业状态</th>
+                                <th>开锁APP</th>
+                                <th>审核结果</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>李大江13</td>
+                                <td>KS320800409</td>
+                                <td>18782963313</td>
+                                <td>昆山丽丽开锁4</td>
+                                <td>2016-03-18 16:32:34</td>
+                                <td>在职</td>
+                                <td>未注册</td>
+                                <td class="text-color">未审核</td>
+                                <td>[<a href="#" class="text-color" data-toggle="modal" data-target="#details-modal">详情</a>]</td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td>李大江13</td>
+                                <td>KS320800409</td>
+                                <td>18782963313</td>
+                                <td>昆山丽丽开锁4</td>
+                                <td>2016-03-18 16:32:34</td>
+                                <td>在职</td>
+                                <td>未注册</td>
+                                <td class="text-color">未审核</td>
+                                <td>[<a href="#" class="text-color" data-toggle="modal" data-target="#details-modal">详情</a>]</td>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <td>李大江13</td>
+                                <td>KS320800409</td>
+                                <td>18782963313</td>
+                                <td>昆山丽丽开锁4</td>
+                                <td>2016-03-18 16:32:34</td>
+                                <td>在职</td>
+                                <td>未注册</td>
+                                <td class="text-color">未审核</td>
+                                <td>[<a href="#" class="text-color" data-toggle="modal" data-target="#details-modal">详情</a>]</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-query">
+                        <nav>
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="tab-pane content-wrap" id="review-details">
+                    <h5>从业人员详细信息</h5>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h3 class="panel-title">个人基本信息</h3></div>
+                        <div class="panel-body">
+                            <dl class="dl-horizontal">
+                                <dt>姓名：</dt>
+                                <dd>李大江13</dd>
+                                <dt>性别：</dt>
+                                <dd>男</dd>
+                                <dt>身份证号：</dt>
+                                <dd>510902200002023313</dd>
+                                <dt>联系方式：</dt>
+                                <dd>18782963313</dd>
+                                <dt>户籍地址：</dt>
+                                <dd>四川宜宾市</dd>
+                                <dt>家庭住址：</dt>
+                                <dd>宜宾市人和大街3313号</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h3 class="panel-title">从业信息</h3></div>
+                        <div class="panel-body">
+                            <div class="col-md-1">
+                                <a href="#" class="thumbnail">
+                                    <img src="img/bd1c6ff887cb448d86b95bd4141d4503.jpg">
+                                </a>
+                            </div>
+                            <dl class="dl-horizontal col-md-11">
+                                <dt>手机号码：</dt>
+                                <dd>18782963313(*该手机号用于APP端验证，可修改。)</dd>
+                                <dt>所属企业：</dt>
+                                <dd>昆山丽丽开锁4</dd>
+                                <dt>证件编号：</dt>
+                                <dd>KS320800409</dd>
+                                <dt>有效期：</dt>
+                                <dd>4年</dd>
+                                <dt>登记日期：</dt>
+                                <dd>2016-03-18 16:32:34</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h3 class="panel-title">审核信息</h3></div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group col-md-1">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="pass" value="option1" checked>
+                                        通过
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="nopass" value="option1" checked>
+                                        不通过
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="button" class="btn btn-info">查询</button>
+                                    <button type="button" class="btn btn-warning">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane content-wrap" id="trading-information">
+                    <h5>开锁交易信息</h5>
+                    <form class="form-record-review">
+                        <div class="form-group col-md-4">
+                            <label>开锁企业：</label>
+                            <select class="form-control">
+                                <option value="">所有</option>
+                                <option value="国有独资公司">国有独资公司</option>
+                                <option value="有限责任公司">有限责任公司</option>
+                                <option value="股份有限公司">股份有限公司</option>
+                                <option value="个体工商户">个体工商户</option>
+                                <option value="个人独资企业">个人独资企业</option>
+                                <option value="私营合伙企业">私营合伙企业</option>
+                                <option value="外资企业">外资企业</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label>开锁日期范围：</label>
+                            <div class="input-daterange input-group datepicker" id="">
+                                <input type="text" class="form-control" name="start" />
+                                <span class="input-group-addon">至</span>
+                                <input type="text" class="form-control" name="end" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="principal">委托人：</label>
+                            <input type="text" class="form-control" id="principal" placeholder="请输入营业执照">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="staff-name">从业人员姓名：</label>
+                            <input type="text" class="form-control" id="staff-name" placeholder="请输入法人">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="lock-type">锁类型：</label>
+                            <input type="text" class="form-control" id="lock-type" placeholder="请输入所属派出所">
+                        </div>
+                        <div class="form-group record-review-submit">
+                            <button type="button" class="btn btn-info">查询</button>
+                            <button type="button" class="btn btn-warning">重置</button>
+                        </div>
+                    </form>
+                    <div class="table-responsive record-review-wrap">
+                        <table class="table table-hover table-striped table-bordered text-center">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>从业人员姓名</th>
+                                <th>证件编号</th>
+                                <th>手机号码</th>
+                                <th>所属企业</th>
+                                <th>登记时间</th>
+                                <th>从业状态</th>
+                                <th>开锁APP</th>
+                                <th>审核结果</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>李大江13</td>
+                                <td>KS320800409</td>
+                                <td>18782963313</td>
+                                <td>昆山丽丽开锁4</td>
+                                <td>2016-03-18 16:32:34</td>
+                                <td>在职</td>
+                                <td>未注册</td>
+                                <td class="text-color">未审核</td>
+                                <td>[<a href="#" class="text-color">详情</a>]</td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td>李大江13</td>
+                                <td>KS320800409</td>
+                                <td>18782963313</td>
+                                <td>昆山丽丽开锁4</td>
+                                <td>2016-03-18 16:32:34</td>
+                                <td>在职</td>
+                                <td>未注册</td>
+                                <td class="text-color">未审核</td>
+                                <td>[<a href="#" class="text-color">详情</a>]</td>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <td>李大江13</td>
+                                <td>KS320800409</td>
+                                <td>18782963313</td>
+                                <td>昆山丽丽开锁4</td>
+                                <td>2016-03-18 16:32:34</td>
+                                <td>在职</td>
+                                <td>未注册</td>
+                                <td class="text-color">未审核</td>
+                                <td>[<a href="#" class="text-color">详情</a>]</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-query">
+                        <nav>
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="tab-pane content-wrap" id="news-release">
+                    <form class="col-md-12">
+                        <fieldset>
+                            <legend>消息发布</legend>
+                            <div class="form-group col-md-4">
+                                <label for="release-object">发布对象：</label>
+                                <select id="release-object" class="form-control">
+                                    <option value="">所有</option>
+                                    <option value="国有独资公司">国有独资公司</option>
+                                    <option value="有限责任公司">有限责任公司</option>
+                                    <option value="股份有限公司">股份有限公司</option>
+                                    <option value="个体工商户">个体工商户</option>
+                                    <option value="个人独资企业">个人独资企业</option>
+                                    <option value="私营合伙企业">私营合伙企业</option>
+                                    <option value="外资企业">外资企业</option>
+                                    <option value="其他">其他</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="validity">有效期：</label>
+                                <div class="input-group">
+                                    <input id="validity" type="text" class="form-control datepicker" data-provide="datepicker" aria-describedby="" data-date-format="yyyy-mm-dd">
+                                    <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="news-headlines">消息标题：</label>
+                                <input type="text" class="form-control" id="news-headlines" placeholder="请输入消息标题">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="message-content">消息内容：</label>
+                                <textarea id="message-content" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="attach-photos">附加照片：</label>
+                                <!--multiple 设置是否可以多张图片上传展示-->
+                                <input id="attach-photos" name="inputimage[]" type="file" multiple class="file-loading">
+                            </div>
+                        </fieldset>
+                        <div class="form-group col-md-12">
+                            <button type="button" class="btn btn-info">保存</button>
+                            <button type="button" class="btn btn-warning">关闭</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>>
+</div>
+<!--页尾-->
+<footer class="text-center">
+    <h4>©2015昆山开锁行业信息管理系统</h4>
+</footer>
+<!-- Modal -->
+<div class="modal fade" id="details-modal" tabindex="-1" role="dialog" aria-labelledby="details-modal-Label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="details-modal-Label">从业人员详细信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 thumbnail">
+                            <img src="img/bd1c6ff887cb448d86b95bd4141d4503.jpg" alt="details-pic">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="col-md-6">
+                                <h4>个人基本信息</h4>
+                                <dl>
+                                    <dt>姓名：</dt>
+                                    <dd>李大江13</dd>
+                                    <dt>性别：</dt>
+                                    <dd>男</dd>
+                                    <dt>身份证号：</dt>
+                                    <dd>510902200002023313</dd>
+                                    <dt>联系方式：</dt>
+                                    <dd>18782963313</dd>
+                                    <dt>户籍地址：</dt>
+                                    <dd>四川宜宾市</dd>
+                                    <dt>家庭住址：</dt>
+                                    <dd>宜宾市人和大街3313号</dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>从业信息</h4>
+                                <dl>
+                                    <dt>手机号码：</dt>
+                                    <dd>18782963313(*该手机号用于APP端验证，可修改。)</dd>
+                                    <dt>所属企业：</dt>
+                                    <dd>昆山丽丽开锁4</dd>
+                                    <dt>证件编号：</dt>
+                                    <dd>KS320800409</dd>
+                                    <dt>有效期：</dt>
+                                    <dd>4年</dd>
+                                    <dt>登记日期：</dt>
+                                    <dd>2016-03-18 16:32:34</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--日期插件-->
+<script src="http://cdn.bootcss.com/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<!--图片文件插件-->
+<script src="http://cdn.bootcss.com/bootstrap-fileinput/4.3.1/js/fileinput.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap-fileinput/4.3.1/js/fileinput_locale_zh.min.js"></script>
+<!--统计图插件-->
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script>
+    /*日期插件*/
+    $('.datepicker').datepicker({
+        language: 'zh-CN',
+        autoclose: true,
+        todayHighlight: true
+    });
+    /*图片文件插件*/
+    $("#attach-photos").fileinput({
+        language: "zh",//设置语言
+        uploadUrl: "/file-upload-batch/2",//上传的地址
+        allowedFileExtensions: ["jpg", "png", "gif"],//接收的文件后缀,
+        maxFileCount: 2,//选择的上传文件个数
+        showUpload: true, //是否显示上传按钮
+        showCaption: true,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        minImageWidth: 50,
+        minImageHeight: 50
+    });
+    /*统计图插件*/
+    $(document).ready(function() {
+        var box; // 全局变量
+        var categories=['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'graph', //图表放置的容器，DIV
+                defaultSeriesType: 'line'   //图表类型line(折线图),
+                // zoomType: 'x' //x轴方向可以缩放
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11月', '12月'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{y:10}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                title: {text: '次数/次'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#EDFAFE',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#EDFAFE'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '今年月业务量',
+                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }, {
+                name: '历史月平均业务量',
+                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'histogram', //图表放置的容器，DIV
+                defaultSeriesType: 'column',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                margin: [ 50, 50, 100, 80]
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                min: 0,
+                title: {text: '笔/月'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#EDFAFE',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#EDFAFE'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '企业月开锁业务量前10统计图：',
+                data: [34.4, 21.8, 20.1, 20, 19.6, 19.5, 19.1, 18.4, 18,
+                    17.3],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-1', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '今日服务反馈' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Fire',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-2', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '本月服务反馈' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Fire',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-3', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '本年服务反馈' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Fire',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-4', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '全部服务反馈' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Fire',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+    })
+</script>
+</body>
+</html>

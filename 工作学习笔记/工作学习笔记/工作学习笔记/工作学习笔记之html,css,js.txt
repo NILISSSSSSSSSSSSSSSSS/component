@@ -1,0 +1,576 @@
+﻿工作学习笔记
+
+Css:
+
+
+1.border_box:box-sizing 用于让所有的input和select框的宽度一致
+    
+2.css很多属性是可以继承的，在大的盒子里面定义好了，就不用在每一个盒子重新定义比如:line-height
+
+3.在用谷歌浏览器审查元素时，尽量多看旁边的继承属性，这样一眼就能看出来
+
+4.在写点击事件的时候，尽量用.on的用法，这样确保动态生成出来的数据也能被点击。
+
+5.在做ajax传参的时候，如果参数传不到服务器上面去，这时候可以用？拼接url的方法，不一定非要用data={}这种。
+
+7.background-clip属性，可是设置背景的剪切位置，可是设置背景剪切到content区，或者padding区
+
+6.ie10及以上支持FormData对象，但是不支持FormData.get方法，这个方法只有谷歌支持。
+
+8.针对flex盒子的隐藏显示，隐藏:display:none;显示：display:flex;
+
+
+
+8.positon做水平垂直居中对齐: 父：poaition relative,子：position:absolute,top:0,left:0,right:0,bottom:0,margin:auro;
+
+7.在做ajax的时候,尽量用字符串拼接的形式，不要用data这种，否则最容易出问题
+
+8.左边固定，右边自适应：1.左边 left,右边margin-left:左边宽度;  2.flex布局，左边定宽度，右边flex:1  3.table布局  4.js计算
+
+8.if三目运算符：var c=c<10? "0"+c : c;
+
+9.移动端上面的line-height属性居中有问题，这时候可以用padding居中。
+
+9.checkbox选择，在1.9以上，最好用  $(".singleCheck").prop("checked", false);不要用attr这个，否则不兼容。
+
+9.在安装苹果软件之后，如果卸载了又继续安装，一般会报错，这时候可以重新下载软件，解压软件，就会变成5个，再依次安装这5个软件，最后在安装苹果软件，这样就可以了，原理是缺少文件造成的。
+
+8.设置top值，可以xx.css("top":"120px")
+
+9.用js控制高度的时候，页面还没加载完成，这时候可以用setTimeout延迟加载
+
+10.手机端用户line-height时候不好居中对齐，这时可以用padding。
+
+5.在获取scrollTop值的时候，滚动条是在哪个元素身上，就获取这个元素的scrollTop值，而不是一味的获取body上面的滚动条。而且，当元素设置了over-flow:hidden的时候，获取不到scroll的任何值。
+
+4.头部固定，中间自适应：box:display:flex;flex-direction:column;
+                        child1:width:200px;  child2:flex:1;
+
+5.改变iframe父页面的src,可以用
+
+	top.location.href=”url”          在顶层页面打开url（跳出框架）
+
+	self.location.href=”url”         仅在本页面打开url地址 　　
+
+	parent.location.href=”url” 　    在父窗口打开Url地址 　　
+
+	this.location.href=”url” 　　    用法和self的用法一致  
+
+当前iframe刷新,  
+        var href=self.location.href
+        self.location.href=href 
+父级刷新
+        var href=parent.location.href
+        parent.location.href=href 
+
+
+6.子页面刷新父页面下的另一个子页面，即子页面刷新兄弟页面：
+
+    var url = $(parent.document).find("#frmContent").attr("src");
+    $(parent.document).find("#frmContent").attr("src", url);
+ 
+原理：用parent获取到父页面，通过parent.document.来获取到页面上的另一个iframe。
+
+4.解决display:inline-block间距问题，1.可以给父元素设置font-size:0px;2.给父元素设置word-spacing:-?px;
+
+5.前端框架,Layui,弹框插件:layer
+
+7.在用js计算高度的时候，谷歌上面支持，但是ie上面会获取不到某个文本的高度，这时候可以用setTimeout延迟计算高度。
+
+7.在使用layer插件的时候，如果用top.layer.open这种方式，则父页面也必须引用layer.js，否则不起效果。路径也要以父页面做参照物，否则链接会报错。
+
+6.在引入插件的时候，经常出现插件效果有问题，这种情况通常都是css冲突所致，可以在页面上删除css，一个一个排查。
+
+7.在引入vue或者vue框架的时候，在谷歌上面不报错，但是会在ie上面报错，原因是vue里面包含了es6语法，ie不支持,这时，可以用es6在线转换成es5。
+
+8.在引入文件的时候，发现不对劲，这时应该检查文件版本问题，一定要注意版本，在谷歌上面支持的，但是在ie上面不一定支持。
+
+5.如果外层div有padding值，里面div的宽度想要超过外层div,则可以用margin-left:-12px;margin-right:-12px;既可以用左右margin负值来调节。
+
+7.json假数据，easyMock网站.
+
+6.打电话,发短信
+<a href="tel:0755-10086">打电话给:0755-10086</a>
+<a href="sms:10086">发短信给: 10086</a>
+
+6.左边固定，右边自适应：1.用tablec-cell布局 2.左边float布局，右边margin-left:左边的宽度
+
+5.如果外层有div没有定义宽度，则里面的元素不用用margin-right:？%，这样要换行
+
+7.input的placeholder会出现文本位置偏上的情况
+           line-height：normal;
+
+8.手机上的input对不齐的问题，可以用padding解决，不要用line-height
+
+8.网页中嵌入外部视频，打开腾讯视频，选择一个视频，鼠标点击下面的分享，复制html代码就行。
+
+6.手机和电脑屏蔽右键菜单功能，  
+
+ //    屏蔽菜单功能
+    function stop(){ return false; }
+    document.oncontextmenu=stop;
+
+
+6.css3中，perspective属性是调节视图间距的，要结合translate使用，否则不起作用，例如：
+transform: perspective(400px) rotateY(40deg);
+
+8.js删除指定元素的数组:
+  for(i=0;i<=appData.length;i++){
+            console.log(appData.length)
+            if(appData[i].id==delId){
+                appData.splice(i,1);
+                break;
+            }
+
+        }
+  注意：一定要返回 break;否则会报错
+
+7.在css里添加scope属性，可以限制css只在某个组件或者模块里面使用
+
+8.在上传文件时，必须用到post请求，格式类型必须为：multipart/form-data，上传文件最好用formData,但是formData不支持IE浏览器。
+
+9.在跨域时，最好采用cors方法，即在服务端设置响应头，允许跨域。
+
+ router.all('*', function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+        res.header("X-Powered-By",' 3.2.1')
+        res.header("Content-Type", "application/json;charset=utf-8");
+        next();
+    });
+
+
+8.写jquery的时候，$(window)大写会不起作用，必须小写。
+
+9.ajax报错，Provisional headers are shown，这是因为服务器没有响应给前台，请求一直挂着所造成的。
+
+
+
+9.图片上传到mysql数据库时，数据库会对"\"进行转义。此时可以将"\"变成"/",或者只保存图片名字，不保存路径。
+
+7.免费下载字体的网站：阿里妈妈字体库，icomoon.io网站，icomoon还可以导入svg格式的图片创建.i字体.
+
+8.后台传过来的文本中，若想要前台有格式段落的显示，则可以  
+
+         var str=`
+              asddddfdggggggggggggggg
+
+              asddddfdgggggggggggggggg
+               `
+  var str2=str.replace(/^/gm,'<p>');//把后台文本内容用p标签包裹
+
+
+9.让一个盒子同时拥有背景图片和背影颜色，可以配合用background-image,background-position,background-color使用.
+
+10.如果给内联元素 平移效果不起作用，则可以把内联元素转换为块状元素或者内联块元素。
+
+10.在css中写hover事件时，如果想鼠标移除时过渡平滑自然，而不是很突兀，transition过渡属性可以写在元素的css里面，而不用写在hover后面。
+
+9.表格中的高度是由内容自动撑大的
+
+10.利用script标签在页面创建模板：1.script type里面的类型如果不是text/javascript，则里面的内容浆不会显示在页面上，而且也不会执行，这里可以用来存贮东西。其中type里面的类型可以是自己随便定义的，只要不是text/javascript就行。
+
+10.绝对定位，是相对于已经定位好的父元素来进行定位，如果父元素没有定位，则它们会参照浏览器来定位，并且要脱离文档流。相对定位，参照自身，不脱离文档流。
+
+12.让两个并列表格并列对齐，可以给两个表格添加   table-layout: fixed;属性，这个属性可以固定表格宽度，使表格对齐。
+
+13.在谷歌浏览器中，有时候会出现表单双边距的情况，这时候可能跟margin有关，也有可能是表单和文字都要设置line-height属性。
+
+11.善于用伪类 before 和after来添加元素，可以减少html标签的数量，并且不影响其他样式。
+
+12.要使得背景图片全屏，并且出现滚动条时也不会出现空白，可以添加 ： 
+   min-height: 100%; background-attachment: scroll;属性。其中background-attachment: scroll;是默认属性，    所以可加可不加。法二：可以把背景图片当做一张图片放在盒子里面，width:100%;height:100%;再用绝对定位。反  正就是和内容出于并列位置
+    
+
+13.background-attachment: scroll;把这个属性添加在要滚动的内容上，则不用担心图片区域出现空白。
+
+13.css 书写获得属性值的方法conten:attr(属性值)
+
+
+14.flex布局：    display: flex;布局方式；
+                
+                 flex-direction：row (元素排列方向水平)
+                   
+                 justify-content: end;水平方向居中；
+
+                 align-items: center;垂直方向居中；
+              
+                 flex-grow：2，表示给某个元素的宽度比例为2
+
+
+13.CSS3定义动画，例子
+
+      animation-play-state:paused/running ;动画的播放暂停，安卓4以下不支持，兼容性差，要停止
+css3动画最好用Js控制，给该动画加一个class类，然后移除这个类就行
+
+      linear ：匀速         
+      infinite：无限循环
+      alternate:反向动画，例如：从小到大，从大到小
+      forwards：动画停止在最后一帧
+
+      animation-delay为负值，表示跳过前面几秒，开始执行。
+animation-delay：定义动画何时开始，它有三个值：默认0（立即执行动画），正值（延时指定时间后，开始执行动画），负值（立即执行，但跳过指定时间后进入动画）
+
+             animation的animation-fill-mode 属性：
+             none，默认样式。
+             forwards，动画结束后，保留关键帧最后一帧的样式。
+              backwards，动画开始前就应用关键帧第一个帧的样式。
+              both，上面两个都用上。
+
+      transform-origin：定义变换的原点。用transform-origin属性改变圆心(中心，轴心)
+
+      .play{
+            animation: pla 4s linear infinite;
+        }
+        @keyframes pla {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+         常用动画属性-transform
+         translate移动
+         rotate旋转
+         scale放大
+          skew扭曲
+           matrix矩阵
+       
+         转一圈只要写1turn就行了，不用写1% 0deg，100%360 deg
+
+
+15.移动端视口控制：
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+
+17.删除伪元素：
+
+  .nav>li:last-child::after{
+            content: "";
+        }
+
+
+16.设置文本溢出：
+ 
+text-overflow:ellipsis; 
+overflow:hidden; 
+white-space:nowrap; 
+
+17.去掉ie input框后面自带的 X ：  input::-ms-clear{display:none;}
+
+18.背景颜色的渐变：
+
+background: linear-gradient(to bottom,#f82f87,#B0363F,#f82f87);}
+
+19.opacity:背景和文字的透明度都会改变
+
+19.表单的multiple属性，可以一次性上传多个文件。
+
+20.html5的formData对象，可以抓包表单里面的值，功能类似与form的提交方式，但这样可以用做ajax提交，避免刷新页面。
+
+21.html5的FileReader对象，可以用来处理文件上传的预览功能，以及把文件路径编译成base64的作用。
+
+20.rgba:可以设置透明度.如果是背景图片：backgroundcolor:rgba();
+         如果是字体: dcolor:rgba();
+
+background-position:50% 50% 显示中间位置
+
+22.background-clip:规定背景的绘制区域,background-clip:padding-box,背景绘制到padding部分。
+   background-clip:content-box,背景被裁剪到内容框。background-clip:border-box,背景被裁剪到边框。
+   
+
+22.在写css transition过渡时，一定不用把过渡效果写在伪类上面，这样鼠标离开时动画会显得很生硬，
+   应该把transition写在自身元素上面
+
+
+23.backgroundsize:绝对值，给背景图片设置大小
+
+24.-webkit-font-smoothing:antialiased 设置字体的抗锯齿或者光滑度要加内核
+一般用 antialiased(一般是对于英文)
+
+25.CSS3选择器：p+a,选中紧挨着p元素后面的同级a,p˜a,选中p后面的同级a元素，不一定要紧挨着
+
+26.content一般和:before,:after一起使用，用来生成内容(img和input没有该属性)，content的内容   一般可以为以下四种：
+
+    none： 不生成任何值。
+    attr： 插入标签属性值
+    url： 使用指定的绝对或相对地址插入一个外部资源（图像，声频，视频或浏览器支持的其他任何    资源）
+    string： 插入字符串
+
+27.box-shadow:0 0 15px black;让盒子四周都有一个黑色模糊背景的阴影
+
+28.  特殊的三列布局--两边固定宽度，中间自适应:
+ 
+     左边：position:absolute;top:0;left:0;
+     右边：position:absolute;top:0;right:0;
+     中间：margin：0 310px 0 210px；     
+          
+
+29.利用PS的脚本快速切图(省时又省力)：
+
+   选择 文件->脚本->将图层导出到文件，然后勾选透明区域、交错、裁切图层
+   可将图层一个个的切出来
+
+30.Firebug Lite的安装使用：
+
+   直接在head中引用Firebug Lite的JS脚本https://getfirebug.com/firebug-lite.js，然后页面加载完成即会在右下角出现Firebug的图标，然后就是使用了。
+
+31.在html的元素中引用data属性，可以存放信息，最后在需要时取出来。
+
+32.Firebug Lite用于调试非火狐浏览器，32.Firebug 用于调试火狐浏览器。
+
+33.  a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+
+     1.去除android a/button/input标签被点击时产生的边框 
+ 
+     2.去除ios a标签被点击时产生的半透明灰色背景 */
+
+34.<meta http-equiv="X-UA-Compatible" content="IE=edge">让 IE 浏览器运行最新的渲染模式下
+
+35.
+  -webkit-appearance: none;
+  加这个样式，然后完全自定义其他样式，适用于所有有自带样式的标签,例如：去掉select框的箭头样式，去掉单选框和复选框的样式。
+
+36.有时候让div居中不起作用，则应该给div一个宽度。
+
+
+38.图片出现空白怎么也调整不了，这时可以给图片一个浮动属性。
+
+
+41.要自定义单选框和复选框的样式，先通过这个属性-webkit-appearance: none;把样式设置为无，
+
+   然后再设置宽高，背景图片等，再通过checked属性改变选中时的背景图片。
+
+42.有时候给某个元素设置margin:0 auto;居中不起作用，这时候应该给元素加个display：block;属性，通常用在让按钮，表单等居中
+
+43.图片居中：margin:0 auto;文字居中:text-align:center;
+
+44.iframe父页面刷新子页面：
+ 
+ $(".shuaXin").click(function () {
+        var url = $(document).find("#frmContent").attr("src");
+        $(document).find("#frmContent").attr("src", url);
+    })
+
+
+44.在做移动端页面时，可以把所有的图片宽高设为640*960,依据它们在图片中的位置调整位置，其余空白部分不管，图片保存png格式，在布局时给多张图片设置为绝对定位，z-index设为一样，left:0,top:0
+
+
+47.布局：在做左侧固定，右侧宽度自适应的布局时，可以给左侧一个浮动，右侧不给宽度和浮动，直接给一个overflow:hidden即可。
+
+48.<a href=”mailto:xx@zhudongdong.cn”>邮箱</a>,   电话<a href=”tel:8888888888″>
+
+
+49.获取元素的绝对位置，$(el).css("top"),      $(el).css("left");
+
+   设置元素的绝对位置, $(el).css("top",val);  $(el).css("left",val);
+
+
+50.display:inline-block,元素之间有间隔的解决方法： 1.父元素设置font-size:0; 2.父元素设置: word-spacing: -6px;
+
+
+49.transform-origin:(x,y)设置变换的基准点
+
+50. function sortNumber(a, b){
+   return a - b; //这里返回的是他们的差值，如果是小于0的值，就会将a排在前面，如果大于0,就会将b排在前面，如果是0的话，就随便。（冒泡排序法！！）
+}
+
+51.-webkit-tap-highlight-color:rgba(255,255,255,0)可以同时屏蔽ios和android下点击元素时出现的阴影。
+
+
+52.隐藏区域中的文字：text-indent:-999px;overflow:hidden;
+
+53.模块化单文件引入：这是百度推荐使用的。个人认为不咋好用，因为这要支持require。
+
+   标签式单文件引入：这个跟我们引入普通的js是一样的，下面的讲解主要是以这个方式为主。
+
+html5:
+
+1.defer,放在scripe里面，目的是让html文档加载完毕后再执行脚本
+例子：
+
+ <script src="jquery-1.7.2.min.js" defer>
+
+2.当动画完成后所执行的事件，可以用 'webkitAnimationEnd', 即当动画完成后所执行的回调函数  例：
+
+$(document.body).on('webkitAnimationEnd', function () {
+$("#large_img").removeClass("animated bounceInRight").removeClass("animated bounceInLeft");
+});
+
+3.event对象中的5种坐标：
+
+   clientX和clientY  ----> 相对于浏览器（可视区左上角0,0）的坐标
+
+   screenX和screenY   ----> 相对于设备屏幕左上角的（0,0）的坐标
+
+   offsetX和offsetY ----> 相对于事件源左上角(0,0)的坐标
+
+   pageX和pageY  相对于整个网页左上角(0,0)的坐标
+
+   X和Y 本是IE属性，相对于用CSS动态定位的最内容包裹元素。
+
+
+3.官方网站下载的源代码中：build:开发只要引入该文件就行了，里面有源文件和压缩文件；
+
+                          doc:全部demo实例文件夹
+                  
+ 			  index.html:demo入口
+                	
+  build文件夹结构介绍：dist:压缩包，包含了所有类型
+                       source:源码包,结构与压缩一样。
+
+4.background:颜色 url("") ;既填充背景颜色，又传图片。
+
+5.onkeyup 事件会在键盘按键被松开时发生，常用在输入一个字后
+
+
+6	CSS scrpite雪碧图
+
+          一、常规使用雪碧图的条件：
+           1、静态图片，不随用户信息的变化而变化；
+           2、小图片，图片容量比较小；
+           3、加载量比较大大图不建议拼成雪碧图，加载时间长
+
+	WHY:
+	有效的减少http请求数量，加速内容显示;
+	请求一次，服务器链接一次，建立链接需要额外的时间
+
+
+7.   2.1雪碧【图】生成
+
+     1、手动ps
+     2、自动生成工具：cssgaga将一组图片传进去之后，系统自动会拼成一张大图，并且会将每一个小图的坐标给出。
+
+cssGaga下载地址：http://www.99css.com/1524/
+[ 查看全文 ]
+
+8.font:12px/1.5; //字体12像素 行高 1.5em 字体
+
+9.用本地json文件做的数据在用ajax请求时只能在服务器上面才能访问到，或者是用Webstorm10自带的服务
+
+  器如果直接在文件里面打开就不行(PS:必须起一个服务器)
+
+
+10.在遍历对象时，可以用for in来遍历 例子： for(var i in geoCoordMap){console.log(geoCoordMap        [i]) }其中打印i的结果是对象的属性名称，打印geoCoordMap[i]的结果是属性值
+
+11.在访问对象的属性时，可以用obj.name来访问或者是obj[name],但是用obj.name时属性名称必须为一个标示符(静态字符串)，不能为变量。但是用obj[name]时，可以为一个静态字符串，也可以为一个变量。若为变量，访问的属性为变量表示的值。
+
+12.nth-child(n)与:nth-of-type(n)，:nth-child(n)表示父元素下面的第n个元素，nth-of-type(n)：表示父元素下面的第n个同类元素，
+
+
+13.
+   E:nth-of-type(n)  表示E父元素中的第n个字节点，且类型为E
+   E:nth-last-child(n) 表示E父元素中的第n个字节点，从后向前计算
+   E:nth-last-of-type(n)表示E父元素中的第n个字节点，且类型为E,从后向前计算
+
+
+
+14.当外面的那层盒子设置了宽度，而里面的元素又想超过外面盒子的宽度时，则可以设置 margin-left:负，
+  margin-right:负
+
+
+15.在做列表时，少用line-height来做垂直居中，因为当文字出现折行时，就没法居中了，而正确的做法是用padding-top和padding-bottom来做垂直居中。
+
+17.移动端点击输入框或者文本框键盘弹出问题：1.$('body,html').height(document.body.clientHeight);
+2.
+
+16.对于inline水平元素：
+垂直padding不影响尺寸，水平padding影响尺寸(但是占据background区域)；
+如何利用这一特性：
+实现登录注册中间的管道符""；
+
+对于块状元素（padding影像尺寸）：1、padding值过大2、width为auto.
+
+高度可控的分割线
+注册<span></span>退出登录
+span {
+padding:16px 6px 1px; margin-left:12px;border-left:2px solid; font-size:0;
+}
+
+
+17.利用padding实现三道杠效果:
+
+    div{
+            width: 60px;height: 10px;padding: 10px 0px ;
+            background: red;
+            background-clip: content-box;
+            border-top: 10px solid;
+            border-bottom: 10px solid;
+        }
+   原理：主要是有一个概念就是一个元素的border四个方向都能单独的设置东西，然后通过padding拉开身位，最后用background-clip:content-box来从元素开始截取删掉意外的东西，从而出现padding留白部分.
+
+  background-clip:content-box，在这里能使背景色只作用于内容区。
+
+18.使用padding来画正方形，可以用padding:50%;
+
+
+19.设置echaerts柱状之间的间距为零的属性： 在series里面设置:  barGap: 0 ;
+
+19.在做表格时，可以用
+table, td, th {
+    border: 1px solid black;
+}，table {
+    border-collapse: collapse;
+}，搭配使用。
+
+
+20.table表格嵌套，边框重叠变粗的解决:
+
+  解决方法
+ 
+      1、外表格样式
+
+        <table border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse;”>
+
+      2、内表格样式
+ 
+        <table border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse;border-        width:0px; border-style:hidden;">
+
+
+21.ajax加载图片下载网址：http://www.ajaxload.info/
+
+
+22.数组排序：从小到大
+
+  array.sort(function(a,b){return a-b})
+
+23.
+       /*------------------------ieHack---------------*/
+       .langueDiv{ padding-left: 52px\0;}
+
+       /*------------------------火狐浏览器的专属hack---------------*/
+     @-moz-document url-prefix() {
+     .langueDiv {
+        padding-left: 30px;
+        color: gray;
+        font-family: "微软雅黑";
+    } }
+
+24.解决hover事件和click事件冲突，可以用css写hover事件，jquery写click事件，这样就不怕鼠标移除后不起点击   事件作用
+
+25.再写事件的时候，一般先写事件再写判断语句，如果先判断再写事件，则不起作用
+
+H5存储的劣势
+1，浏览器兼容问题
+2，同源限制
+3，脚本控制，H5存储都是存在浏览器本地，由脚本控制、访问，服务器端如果想访问，挺难；
+4，更新策略，不像cookie那样有过期时间，得自己控制。
+
+H5存储的优势：空间大、接口丰富、数据相对安全、省流量、关系！将数据存放到客户端，适应的场景，网络不好、单页面访问、离线APP!
+
+
+html5 添加的全局属性：
+data-yourValue;（自定义属性前加data-）
+hidden：（默认为隐藏）
+spellcheck(可以检测你输入的字体和单词是否为正确的)
+tabindex(用户按下tab建时，光标对应的下标依次对应)
+contenteditable(页面text可以局部修改)
+desginMode(为“on”时页面可以全部修改)
+
+2.html5shiv.js主要解决HTML5提出的新的元素不被IE6-8识别，这些新元素不能作为父节点包裹子元素，并  且不能应用CSS样式。让CSS 样式应用在未知元素上只需执行 document.createElement(elementName) 即  可实现。html5shiv就是根据这个原理创建的。
+
+3.respond.min.js 解决ie8对css3媒体查询的支持

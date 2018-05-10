@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="jquery.lazyload.js"></script>
+    <style>
+        #sidebar {
+            width: 0px;
+        }
+
+        #content {
+            width: 770px;
+        }
+        code {
+            font-family: "Courier New", Courier, mono;
+            color: #2fbe35;
+        }
+        #content img {
+            float: left;
+            border: 1px solid #999;
+            margin-top: 4px;
+            padding: 6px;
+            margin-right: 7px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+<img class="lazy" src="img/grey.gif" data-original="banner_14.jpg" width="640" heigh="480">
+</body>
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        /*  参数
+         img 设置区域
+         threshold:200 设置敏感度，在距离显示区域200像素的时候就开始预先加载。这个值可以是负值。 默认: 0
+         placeholder:"img/grey.gif" 设置占位图片
+         event:"click" 设置触发加载事件 click、mouseover、默认:等待状态
+         effect : "fadeIn" 设置显示特效 默认:show
+         container: $("#container")设置在容器里面的图片 #container {height: 600px;overflow: scroll;}
+         failurelimit : 10;设置图片在页面中的次序和HTML代码中次序不相同时.令插件找到 10 个不在可见区域的图片是才停止搜索。
+         effectspeed:10000 设置载入的速度，越大就越慢 毫秒
+         loading:true 是否在加载中时，显示loading图片
+         延迟加载图片代码块：
+         $(function() {
+         $("img").lazyload({
+         event : "sporty"
+         });
+         });
+         $(window).bind("load", function() {
+         var timeout = setTimeout(function() { $("img").trigger("sporty") }, 5000);
+         });
+         */
+        $(function() {
+            $("img").lazyload({
+                placeholder:"images/ccc.gif",
+                loading:true,
+                effectspeed:500,
+                effect : "fadeIn"
+            });
+        });
+
+
+    });
+</script>
+</html>

@@ -1,0 +1,11 @@
+
+小bug 知识点
+
+
+1：html input select等控件宽度对不齐？请使用box-sizing。
+   今天终于明白为什么表单元素的宽度经常对不齐了，原来是计算的问题。
+
+  为元素设置：box-sizing: border-box;，则表明width的宽度为内容本身宽度+padding+border（高度一样）
+  为元素设置：box-sizing: content-box;，（默认就是这个），则表明width的宽度就是内容本身的宽度，padding以外的再另算。
+  而input、select默认的样式是不同的，所以就造成了width设置的一样，但就是对不齐。全部设成border-box就省事了。
+（IE8及以上版本支持。） 

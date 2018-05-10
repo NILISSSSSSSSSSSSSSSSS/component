@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" media="all" href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.min.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" >
+            <div id="graph" style="height:400px"></div>
+            <div id="histogram" style="height:400px"></div>
+        </div>
+        <div class="col-md-6" >
+            <div id="pie-chart-1" class="col-md-6" style="height:400px"></div>
+            <div id="pie-chart-2" class="col-md-6" style="height:400px"></div>
+            <div id="pie-chart-3" class="col-md-6" style="height:400px"></div>
+            <div id="pie-chart-4" class="col-md-6" style="height:400px"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script>
+    $(document).ready(function() {
+        var box; // 全局变量
+        var categories=['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11', '12']
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'graph', //图表放置的容器，DIV
+                defaultSeriesType: 'line'   //图表类型line(折线图),
+                // zoomType: 'x' //x轴方向可以缩放
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11', '12'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{y:10}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            // xAxis: {
+            //  min:0,
+            //  max:12,
+            //  tickInterval:1
+            // },
+            // yAxis: {
+            //  min:0,
+            //  lineWidth:1,
+            //  minPadding:0,
+            //  plotLines: [{
+            //      value: 0,
+            //      width: 1,
+            //      color: '#808080'
+            //  }]
+            // },
+            yAxis: {  //y轴
+                title: {text: '次数/次'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            xAxis: {
+                labels: {
+                    formatter: function() {
+                        return categories[this.value];
+                    }
+                },
+                tickInterval:1
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#EDFAFE',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#EDFAFE'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '今年月业务量',
+                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }, {
+                name: '历史月平均业务量',
+                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'histogram', //图表放置的容器，DIV
+                defaultSeriesType: 'column',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                margin: [ 50, 50, 100, 80]
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11', '12'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                min: 0,
+                title: {text: '笔/月'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#EDFAFE',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#EDFAFE'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '企业月开锁业务量前10统计图：',
+                data: [34.4, 21.8, 20.1, 20, 19.6, 19.5, 19.1, 18.4, 18,
+                    17.3, 16.8, 15, 14.7, 14.5, 13.3, 12.8, 12.4, 11.8,
+                    11.7, 11.2],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-1', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11', '12'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                min: 0,
+                title: {text: '笔/月'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-2', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11', '12'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                min: 0,
+                title: {text: '笔/月'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-3', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11', '12'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                min: 0,
+                title: {text: '笔/月'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+        box= new Highcharts.Chart({
+            chart: {
+                renderTo: 'pie-chart-4', //图表放置的容器，DIV
+                defaultSeriesType: 'pie',//图表类型column(柱状图),
+                // zoomType: 'x' //x轴方向可以缩放
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false   //右下角不显示LOGO
+            },
+            title: {
+                text: '' //图表标题
+            },
+            subtitle: {
+                text: ''  //副标题
+            },
+            xAxis: {  //x轴
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月',
+                    '11', '12'], //x轴标签名称
+                gridLineWidth: 1, //设置数线网格宽度为1
+                lineWidth: 2,  //基线宽度
+                labels:{rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }}  //x轴标签位置：距X轴下方26像素 S
+                // tickmarkPlacement:'on'
+            },
+            yAxis: {  //y轴
+                min: 0,
+                title: {text: '笔/月'}, //标题
+                lineWidth: 1, //基线宽度
+                // min: 0, // 这个用来控制y轴的开始刻度（最小刻度），另外还有一个表示最大刻度的max属性
+                //    startOnTick: false // y轴坐标是否从某一刻度开始（这个设定与标题无关）
+                minPadding:0,
+                startOnTick:false
+            },
+            labels: {
+                formatter: function() {
+                    return categories[this.value];
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            legend: {  //图例
+                layout: 'horizontal',  //图例显示的样式：水平（horizontal）/垂直（vertical）
+                backgroundColor: '#ffc', //图例背景色
+                align: 'left',  //图例水平对齐方式
+                verticalAlign: 'top',  //图例垂直对齐方式
+                x: 100,  //相对X位移
+                y: 70,   //相对Y位移
+                floating: true, //设置可浮动
+                shadow: true  //设置阴影
+            },
+            exporting: {
+                enabled: true  //设置导出按钮不可用
+            },
+            series: [{ //数据列
+                name: '服务反馈统计：',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+.content-wrap > div {
+    padding: 0;
+}
+.statistical-figure > div {
+    height: 330px;
+    border: 1px solid #c8c8c8;
+}
+.trading-info {
+    font-size: 12px;
+}
+.trading-info h4 {
+    margin: 0;
+    font-size: 12px;
+}
+.trading-info p {
+    color:#BBBBBB
+}
+.info-icon {
+    float: right;
+    line-height: 28px;
+}
+.trading-info a {
+    padding: 5px;
+    float: left;
+    display: block;
+    width: 100%;
+}
+.trading-info a:nth-child(1) {
+    border: 1px solid #ddd;
+}
+.trading-info a:nth-child(1), .trading-info a:nth-last-child(1) {
+    border-radius: 0;
+}
+.well-received {
+    color: #EEA405;
+}
+.bad-received {
+    color: #BDBDBD;
+}

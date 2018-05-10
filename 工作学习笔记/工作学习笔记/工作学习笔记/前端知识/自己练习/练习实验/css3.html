@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>  </title>
+    <style type="text/css">
+        .img-wrap {
+            width: 30px;
+            height: 30px;
+            /*background-image:url(images/1.jpg),url(images/index-1.jpg);*/
+            background-image:url(images/index-1.jpg);
+            background-repeat:no-repeat;
+            /*background-clip: border-box;*/
+            background-position:left;
+            background-origin: content-box;
+            padding: 15px;
+        }
+        .color-wrap {
+            width: 30px;
+            height: 30px;
+            background-color: blue;
+            background-clip: content-box;
+            padding: 15px;
+        }
+        .wrap {
+            width: 30px;
+            height: 30px;
+            background: #00FF00 url(images/index-1.jpg) no-repeat fixed top;
+        }
+        .transform {
+            width: 30px;
+            height: 30px;
+            background-color: #cdcdcd;
+            transform:rotate3d(10deg,5deg,20deg);
+            transition: all 0.8s;
+        }
+        .transform:hover {
+            transform:rotate3d(10deg,5deg,20deg);
+        }
+        .animate {
+            width:100px;
+            height:100px;
+            background:red;
+        }
+        .animate:hover {
+            animation:myfirst 5s linear 0s 1 alternate;
+        }
+        @keyframes myfirst {
+/*            from {background:red;}
+            to {background:yellow;}*/
+            0%   {background: red;}
+            25%  {background: yellow;}
+            50%  {background: blue;}
+            100% {background: green;}
+        }
+
+    </style>
+</head>
+<body>
+<div class="img-wrap"></div>
+<div class="color-wrap"></div>
+<div class="wrap"></div>
+<div class="transform">123</div>
+<div class="animate">123</div>
+<script>
+
+</script>
+</body>
+</html>

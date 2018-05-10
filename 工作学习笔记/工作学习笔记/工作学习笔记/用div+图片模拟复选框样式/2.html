@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input[type=checkbox] {
+            visibility: hidden;  width: 20px;
+            height: 20px;
+        }
+        div{
+            width: 80px;height: 20px;position: relative;
+        }
+        .icon{
+            background: url("checkBox.png") no-repeat;
+            border-radius: 3px;
+            display: inline-block;
+            border: 1px solid #b4b4b7;
+            position: absolute;
+            top: 0px;
+            height: 20px;
+            background-size: contain;
+            padding-left: 30px;
+            left: 0px;
+        }
+        .iconChecked{
+            height: 20px;
+            background: url("checkBox_checked.png")  no-repeat;;position: absolute;
+            top: 0px; background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+<section>
+    <div class="checkboxOne">
+        <input type="checkbox" value="1" id="checkboxOneInput" name="">
+        <label for="checkboxOneInput" class="icon ">111222</label>
+    </div>
+</section>
+<script src="jquery-1.9.1.min.js"></script>
+<script>
+    $(".icon").click(function(){
+        $(this).toggleClass("iconChecked")
+    })
+</script>
+</body>
+</html>

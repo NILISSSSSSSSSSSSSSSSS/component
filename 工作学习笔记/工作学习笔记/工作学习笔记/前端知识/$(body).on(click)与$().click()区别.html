@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js中事件绑定,$("body").on("click")与$("").click()区别</title>
+    <style>
+        a{
+            display:block;
+            width: 100px;
+            height: 30px;
+        }
+        .sex_icon{
+            background-color: green;
+        }
+        .sexon_icon{
+            background-color: yellow;
+        }
+        .set_icon{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<dl>
+    <dt>性别</dt>
+    <dd>
+        <a href="javascript:void(0);" class="sex_icon set_icon"></a><p>男</p>
+        <a href="javascript:void(0);" class="sex_icon set_icon"></a><p>女</p>
+        <a href="javascript:void(0);" class="sexon_icon set_icon"></a><p>保密</p>
+    </dd>
+</dl>
+</body>
+
+<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script>
+// 有问题、有bug的：
+    $(function(){
+        $(".sex_icon").click(function(){
+            alert($(this).next().text());
+            $(this).removeClass().addClass("sexon_icon set_icon").siblings("a").removeClass().addClass("sex_icon set_icon");      
+        });
+    });
+/*  你的问题的关键是哪些元素被绑定了click事件。你以为三个a标签都被绑定了click事件是吗？其实只有两个a标签被绑定了click事件，即男和女的这两个选项前面的a标签。因为它们都有sex_icon的class。你的保密选项因为没有sex_icon的class，所以没有被绑定click事件，后来它有了sex_icon的class，那是因为另外两个选项的点击事件代码里面给的。也就是动态给的sex_icon样式。但是element.click这种写法不支持给动态元素或者样式重新绑定事件。
+
+支持给动态元素和属性绑定事件的是live和on，其中live在JQUERY 1.7之后就不推荐使用了。现在主要用on，使用on的时候也要注意，on前面的元素也必须在页面加载的时候就存在于dom里面。动态的元素或者样式等，可以放在on的第二个参数里面。*/
+  
+// 成功的、无问题的：
+    /*$(function(){
+        $("body").on("click",".sex_icon",function(){
+            alert($(this).next().text());
+            $(this).removeClass().addClass("sexon_icon set_icon").siblings("a").removeClass().addClass("sex_icon set_icon");      
+        });
+    });*/
+</script>
+</html>

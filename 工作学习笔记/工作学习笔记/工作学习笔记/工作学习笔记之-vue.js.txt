@@ -1,0 +1,94 @@
+1.在用单文件引入vueJs时候，js文件必须放在最下面，以防止文档结构还没加载完全获取不到元素。
+
+2.vueJs如果是单文件引用，则在ie上面可能会有问题，因为ie不支持es6语法，这时候可以用es6在线转换工具、
+
+3.从一个地方复制用npm构建的项目，最好每次都要先删除node-modules， 再 npm install一下，这样避免报错.
+
+4.如果总是在报错误，但是又解决不了，这时候不妨重新安装，尤其是elementUI里面下载的vue，在ie上面有问题，最好是在vue官网下载。
+
+5.使用了属性或变量，但是在vue中没有注册或者定义，就会在ie中报错。
+
+6..vue中的es6语法报错，可以直接在<script>标签中添加type="text/ecmascript-6"，.vue里面的代码会高亮并支持ES6。
+
+7.用npm安装的时候，有时候会报resources busy or locked,这个时候需要删除文件里面的lock.js就行
+
+7.在引入vue或者vue框架的时候，在谷歌上面不报错，但是会在ie上面报错，原因是vue里面包含了es6语法，ie不支持,这时，可以用es6在线转换成es5。
+
+8.在安装webstorm的时候，报错关于java的错，这时候可以卸载java有关的东西。
+
+9.使用汉化包时,webtorm乱码，设置下字体格式就行了。
+
+10.c盘东西太多，可以使用电脑管家把文件移动到其他盘。
+
+9.npm init,会生成一个package.json包,安装模块时在后面添加 --save ,可以把这个模块加入到pakeage.son里面。别人只需要npm install
+
+ 就可以下载pakeage.json里面的所有模块。
+
+10.在根元素上面添加 v-cloak，可以让vue渲染页面的时候不会出现{{}}，影响用户体验
+
+11.全局安装了webpack再局部安装.
+
+12.将vue项目打包部署到服务器上面，
+   1.在config目录下面的index.js里面，将所有的      assetsPublicPath: '/',改成 
+   assetsPublicPath: './',
+   2.执行npm run build命令，会生成一个dist文件夹，里面有html,js,css，点击html页面可以直接看到效果。
+   3.将这个dist文件上传到服务器即可。
+
+13.没有打包的vue项目，在控制台里面看到的是app.js,打包后的可以看到有几个js文件
+
+14.在做管理系统页面的时候，登陆页面和首页之间属于并列关系，在配置路由的时候需要注意一下。
+
+15.在结合elementUI的情况下，组件上面应该套一个template标签，否则会报错
+
+16.在注册全局组件的时候，注册的组件需要在初始化根实例之前注册了组件；之前，之前。引入组件的时候，必须要有template标签包裹。
+
+17.用prop传递值的时候，注意不要用驼峰命名，否则会报错。
+
+18.elementUI常见坑系列（重点要看）
+址:https://www.v2ex.com/t/368070。
+
+19.对象的深拷贝和浅拷贝，浅拷贝：改变某个属性值，复制和被复制对象同时会改变。深拷贝：改变属性值时候，复制和被复制对象不好同时改变。方法1.var newObj=deepCopy(defaultOpt) 2.var copy = Object.assign({}, obj);
+3.this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })第三个最重要。
+
+20.在用vue-model时候，若不想改变原来对象，先深拷贝可以使用深拷贝对象。
+
+21.vue数据已经改变但是视图没改变，这个问题发生在对象上，可以使用 1.this.$set(this.tableData,msg.tabledata)，但是这个方法不稳妥，最好用第二个方法;2.this.tableData = Object.assign({}, this.tableData,msg.tabledata)，这个最重要。
+
+22.this.$set这种方法不适合字符串，只适合对象。
+
+23.vue只要报错，就一定要解决，否则会影响后面的代码，会出现异常Bug。
+
+24.vue有时候报错是布尔值，而非字符串时，这种最好不要直接赋值，而是在data里面赋值在绑定。
+
+25.组件之间通信时，复杂功能应该在父组件完成，而非子组件，这样便于传值。
+
+24.在安装node环境的时候，一定要安装在c盘，不要更改路径，如果报错:npm 不是内部指令，这时候可以卸载node，重新安装Node到c盘即可。
+
+25.使用routerLink传参的时候，要想 query里面的名字也动态改变，可以query里面的东西用对象保存起来赋值。
+
+26.query要用path来引入，params要用name来引入，接收参数都是类似的，分别是this.$route.query.name和this.$route.params.name。
+
+27绑定路由的时候，如果用 :to,可以 这样  :to="{ path: '/'+item }"
+
+28.computed函数实现数据的双向绑定: computed里的return,实际上是一个get方法,如果只有return的话，是无法实现双向数据绑定的，因为并没有set数据啊，增加一个可以做中转的依赖属性，重写计算属性的set和get方法，这样就能实现计算属性的双向绑定。例子： 
+ data: {
+        foo: 'test',
+    },
+    computed: {
+        _foo: {
+            set: function(value) {
+                this.foo = value;
+            },
+            get: function() {
+                return this.foo
+            }
+        }
+    }
+
+28.要引用全局样式，最好在main.js中引用 common.css
+29.在用 vue-in18翻译时，data里面的值写在计算属性里面。
+30.this.$set使用方法: 1.当利用索引直接设置一个项时 2.当修改数组的长度时。
+17.vue中引入本地json文件，需要把文件放在static目录里面，或者使用express请求。
+18.computed里面的函数，可以在watch里面监听这个函数。
+19.引用全局js，可以在main.js中引入，然后再用 Vue.prototype. xx=xx  //来配置
+20.再用时间组件的时候，如果赋值报错，则要转换值的类型.

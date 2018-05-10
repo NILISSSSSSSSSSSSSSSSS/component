@@ -1,0 +1,3 @@
+http://developer.baidu.com/map/jsdemo.htm#a1_7
+
+方法说明：点击这个网址进去，选好想要的地图类型，复制对应的代码，再把百度秘钥输进去

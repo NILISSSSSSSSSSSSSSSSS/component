@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<link rel="stylesheet" href="main.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="class_content">
+    <ul class="select">
+        <li class="select-list">
+            <dl id="select1">
+                <dt>选项三：</dt>
+                <dd class="select-all selected"><a href="#">全部</a></dd>
+                <dd><a href="#">内容31</a></dd>
+                <dd><a href="#">内容32</a></dd>
+                <dd><a href="#">内容33</a></dd>
+                <dd><a href="#">内容34</a></dd>
+                <dd><a href="#">内容35</a></dd>
+                <dd><a href="#">内容36</a></dd>
+                <dd><a href="#">内容37</a></dd>
+            </dl>
+        </li>
+        <li class="select-list">
+            <dl id="select2">
+                <dt>选项二：</dt>
+                <dd class="select-all selected"><a href="#">全部</a></dd>
+                <dd><a href="#">内容22</a></dd>
+                <dd><a href="#">内容33</a></dd>
+                <dd><a href="#">内容44</a></dd>
+                <dd><a href="#">内容55</a></dd>
+                <dd><a href="#">内容66</a></dd>
+            </dl>
+        </li>
+        <li class="select-list">
+            <dl id="select3">
+                <dt>选项三：</dt>
+                <dd class="select-all selected"><a href="#">全部</a></dd>
+                <dd><a href="#">内容2</a></dd>
+                <dd><a href="#">内容3</a></dd>
+                <dd><a href="#">内容4</a></dd>
+                <dd><a href="#">内容5</a></dd>
+            </dl>
+        </li>
+        <li class="select-result">
+            <dl>
+                <dt>已选条件：</dt>
+                <dd class="select-no">暂时没有选择过滤条件</dd>
+            </dl>
+        </li>
+        <p class="search_chanpin">
+            <label>品名：<input name="s" value="" size="15" maxlength="25" placeholder="" type="search"></label>
+            <label>规格：<input name="s" value="" size="15" maxlength="25" placeholder="" type="search"></label>
+            <label>品牌：<input name="s" value="" size="15" maxlength="25" placeholder="" type="search"></label>
+            <button class="search-btn" type="submit" class="btn-warning2 btn-ls btn">搜索</button>
+        </p>
+    </ul>
+</body>
+
+<!---------------------对于克隆出来的元素，在绑定事件时要用 jquery-1.7.2.min.js里面的live ，否则其他不行-->
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<!-- <script src="ie_supportPlaceholder.js"></script> -->
+<script>
+    $(document).ready(function(){
+
+        $("#select1 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("select-all")) {
+                $("#selectA").remove();
+            } else {
+                var copyThisA = $(this).clone();
+                if ($("#selectA").length > 0) {
+                    $("#selectA a").html($(this).text());
+                } else {
+                    $(".select-result dl").append(copyThisA.attr("id", "selectA"));
+                }
+            }
+        });
+
+        $("#select2 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("select-all")) {
+                $("#selectB").remove();
+            } else {
+                var copyThisB = $(this).clone();
+                if ($("#selectB").length > 0) {
+                    $("#selectB a").html($(this).text());
+                } else {
+                    $(".select-result dl").append(copyThisB.attr("id", "selectB"));
+                }
+            }
+        });
+
+        $("#select3 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("select-all")) {
+                $("#selectC").remove();
+            } else {
+                var copyThisC = $(this).clone();
+                if ($("#selectC").length > 0) {
+                    $("#selectC a").html($(this).text());
+                } else {
+                    $(".select-result dl").append(copyThisC.attr("id", "selectC"));
+                }
+            }
+        });
+
+        $("#selectA").live("click", function () {
+            $(this).remove();
+            $("#select1 .select-all").addClass("selected").siblings().removeClass("selected");
+        });
+
+        $("#selectB").live("click", function () {
+            $(this).remove();
+            $("#select2 .select-all").addClass("selected").siblings().removeClass("selected");
+        });
+
+        $("#selectC").live("click", function () {
+            $(this).remove();
+            $("#select3 .select-all").addClass("selected").siblings().removeClass("selected");
+        });
+
+        $(".select dd").live("click", function () {
+            if ($(".select-result dd").length > 1) {
+                $(".select-no").hide();
+            } else {
+                $(".select-no").show();
+            }
+        });
+
+    });
+</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> button state </title>
+    <!--bootstrap css-->
+    <link rel="stylesheet" media="all" href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--flat-ui css-->
+    <link href="css/flat-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <!--bootstrap-switch css-->
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <style>
+    #animationSandbox {
+        margin-top: 150px;
+    }
+    .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    </style>
+</head>
+<body>
+<div class="container-fluid wrap">
+    <div class="row">
+        <a class="btn btn-lg btn-primary buttonstyle" data-loading-text="正在提交" data-complete-text="提交完成" data-failure-text="提交失败" autocomplete="off">
+        <i class="glyphicon glyphicon-triangle-bottom buttonicon"></i>
+        <span class="button-text">提交审核</span>
+        </a>
+    </div>
+</div>
+
+<span id="animationSandbox" style="display: block;" class="bounceInDown animated"><h1 class="site__title mega">Animate.css</h1></span>
+<input type="checkbox" name="my-checkbox" checked>
+<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+<script>
+    /*$('.wrap a').on('click', function () {
+    $('.wrap a').button('loading');
+    setTimeout(function () { 
+        // $('.wrap a').append("<span class='glyphicon glyphicon-triangle-right'></span>");
+        $('.wrap a').append("<span class='glyphicon glyphicon-triangle-right' style='opacity:0;'></span>");
+    },5);
+    setTimeout(function () { 
+     // $(".wrap a span").fadeIn("slow");
+     // $(".wrap a span").fadeTo("slow", 0.66);
+     $(".wrap a span").animate({ opacity: '1'}, 500);
+    },15);
+    setTimeout(function () { 
+        $('.wrap a').button('failure'); 
+    },2000);
+    setTimeout(function () { 
+        $('.wrap a').append("<span class='glyphicon glyphicon-triangle-top' style='opacity:0;'></span>");
+        // $('.wrap a span').addClass('glyphicon glyphicon-triangle-top');
+    },2005);
+    setTimeout(function () { 
+     // $(".wrap a span").fadeIn("slow");
+     // $(".wrap a span").fadeTo("slow", 0.66);
+     $(".wrap a span").animate({ opacity: '1'}, 500);
+    },2015);
+    // setTimeout(function () { $('.wrap a').button('reset'); },2000);
+    })
+
+
+    $("[name='my-checkbox']").bootstrapSwitch();
+     $('.radio2').on('switch-change', function () {
+        $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
+    });*/
+
+    var buttontext=$(".button-text");
+    var buttonstyle=$(".buttonstyle");
+    var buttonicon=$(".buttonicon");
+    function buttonloading(){
+        buttonicon.removeClass("glyphicon-triangle-bottom");
+        buttonicon.addClass("glyphicon-triangle-right");
+        buttonstyle.removeClass("btn-primary");
+        buttonstyle.addClass("btn-info");
+        buttontext.text("正在提交");
+    }
+    function buttonsuccess(){
+        buttonicon.removeClass("glyphicon-triangle-right");
+        buttonicon.addClass("glyphicon-triangle-top");
+        buttonstyle.removeClass("btn-info");
+        buttonstyle.addClass("btn-success");
+        buttontext.text("提交完成");
+    }
+    buttonstyle.on('click', function () {
+        buttonloading();
+        setTimeout(function () { buttonsuccess(); },2000);
+    })
+
+</script>
+</body>
+</html>

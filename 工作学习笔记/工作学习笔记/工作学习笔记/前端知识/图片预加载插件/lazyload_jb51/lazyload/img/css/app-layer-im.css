@@ -1,0 +1,24 @@
+.sys-layer-im-01{position:absolute;z-index:20;color:#253F64;font-size:12px;width:31px;top:0;left:100%;margin-left:-31px;}
+.sys-layer-im-01 .sys-layer-im-btn{width:31px;height:131px;cursor:pointer;text-indent:-9999px;}
+.sys-layer-im-01 .sys-layer-im-btn-zh{background:url(../img/layer-im/01/title-zh.gif);}
+.sys-layer-im-01 .sys-layer-im-btn-en{background:url(../img/layer-im/01/title-en.gif);}
+.sys-layer-im-01 .sys-layer-im-box{position:absolute;left:30px;top:0;width:0;overflow:hidden;padding-bottom:6px;background:url(../img/layer-im/01/foot.png) no-repeat 0 100%;display:none;}
+.sys-layer-im-01 .sys-layer-im-group{width:149px;}
+.sys-layer-im-01 .sys-layer-im-group h2{height:29px;padding:0 9px;font-weight:100;line-height:29px;background:url(../img/layer-im/01/head-2.gif);}
+.sys-layer-im-01 .sys-layer-im-group-first h2{background:url(../img/layer-im/01/head-1.png);}
+.sys-layer-im-01 .sys-layer-im-group ul{background:url(../img/layer-im/01/bg.gif);padding-top:1px;}
+.sys-layer-im-01 .sys-layer-im-group ul a{display:block;width:134px;margin-left:1px;line-height:25px;height:25px;overflow:hidden;padding:0 5px;color:#253F64 !important;}
+.sys-layer-im-01 .sys-layer-im-group ul a .sys-layer-im-icon{float:left;width:16px;margin:4px 13px 0 0;}
+.sys-layer-im-01 .sys-layer-im-group ul a:hover,
+.sys-layer-im-01 .sys-layer-im-group ul a:active{background:url(../img/layer-im/01/hover.png) no-repeat 50% 0;color:#253F64 !important;}
+
+.sys-layer-im-02{position:absolute;z-index:20;color:#000;font-size:12px;width:120px;top:0;left:100%;margin-left:-130px;background:#fff;border:#069 5px solid;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.sys-layer-im-02 .sys-layer-im-btn{height:40px;text-indent:-9999px;}
+.sys-layer-im-02 .sys-layer-im-btn-zh{background:url(../img/layer-im/02/title-zh.png);}
+.sys-layer-im-02 .sys-layer-im-btn-en{background:url(../img/layer-im/02/title-en.png);}
+.sys-layer-im-02 .sys-layer-im-box{padding:5px 15px 10px;}
+.sys-layer-im-02 .sys-layer-im-group{padding-bottom:10px;}
+.sys-layer-im-02 .sys-layer-im-group h2{margin-bottom:10px;}
+
+.sys-layer-im-02 .sys-layer-im-group .showname{padding-bottom:3px;}
+.sys-layer-im-02 .sys-layer-im-group .showname a{display:block;line-height:24px;padding-left:25px;background-position:0 50%;background-repeat:no-repeat;}

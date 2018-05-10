@@ -1,0 +1,87 @@
+/*头部导航*/
+nav.nav-header {
+    background: #0E507D;
+    height: 108px;
+    border: 0;
+    margin: 0;
+    overflow: hidden;
+}
+nav.nav-header > div {
+    padding: 0;
+}
+.logo {
+    padding: 20px 0 0 40px ;
+}
+.navbar-footer {
+    font-size: 13px;
+    position: absolute;
+    font-family: 'Arial Normal', 'Arial';
+    color: #333333;
+    top: 80px;
+    width: 100%;
+    height: 30px;
+    background: url(../img/nav-top-bg.png) repeat-x;
+}
+/*侧边导航*/
+.main-nav {
+    background: #0E507D;
+    padding: 0;
+    border-right: 5px solid #E6EEF8;
+    height: 878px;
+    /*width: 195px;*/
+}
+.main-nav ul > li{
+    border-bottom: 1px solid rgb(2, 58, 94);
+    border-top: 1px solid rgb(28, 101, 152);
+}
+.main-nav > ul > li > ul {
+    background: url(../img/u132_selected.png);
+}
+.main-nav a {
+    color: #ffffff;
+}
+.main-nav > ul > li > a {
+    padding: 10px 22px;
+}
+.main-nav > ul > li > ul > li > a {
+    padding: 10px 30px;
+}
+.main-nav-tabs > li.active > a, .main-nav-tabs > li.active > a:focus, .main-nav-tabs > li.active > a:hover {
+    color: #ffffff;
+    cursor: default;
+    background-color: rgb(5, 69, 113);
+    border:0;
+}
+.mouse-color > li > a:focus, .mouse-color > li > a:hover {
+    background-color: rgb(5, 69, 113);
+    border:0;
+}
+/*主题内容*/
+.main-content {
+    padding: 0;
+}
+.main-content > div {
+    margin-bottom: 0;
+}
+/*小导航*/
+.small-navigation {
+    padding: 0;
+    margin-bottom: 0;
+}
+.icon {
+    font-size: 10px;
+    font-weight: lighter;
+}
+/*页尾*/
+footer {
+    color: #434343;
+    background: #E4E4E4;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer h4 {
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+}

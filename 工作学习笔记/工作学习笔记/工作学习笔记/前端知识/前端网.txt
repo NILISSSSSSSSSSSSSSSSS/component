@@ -1,0 +1,210 @@
+http://www.w3cfuns.com/notes/id/all:all:all:efa77332f55d2311d9ea420bd32cffd3.html
+http://www.zhangxinxu.com/wordpress/page/3/
+http://www.sucaihuo.com/
+
+bootstrap css常用类名：http://v2.bootcss.com/base-css.html
+
+
+字符串数组操作：http://blog.csdn.net/woshifeixingzhuiyue/article/details/11969805
+css3动画简介以及动画库animate.css的使用：http://www.cnblogs.com/2050/p/3409129.html
+
+三、IT互联网相关的：
+
+    IT互联网IT互联网学习相关网站
+    IT程序员IT程序员学习相关网站
+    IT移动开发IT移动开发学习相关网站
+    web开发web开发学习相关网站
+    IT培训机构
+
+    这些培训机构上可以找到一部分免费的教程
+
+
+四、IT职业技能相关网站：
+
+    产品经理网站导航N多产品经理学习入门学习网站
+    UI设计师学习网站导航N多UI设计师入门学习网站
+    WEB前端学习网站导航N多前端初学者学习入门的网站
+    黑客|网络安全学习网站导航N多黑客入门安全攻防学习资料
+    科技媒体网站导航
+
+    了解互联网圈内动态，培养互联网思维~
+
+
+五、其他：
+
+    稀奇古怪的网站不少都是很有意思的，不要错过~
+    稀奇古怪工具有些工具可是神器哦~
+    益智训练专治大脑生锈！
+    舞蹈|艺术妹子可以看看
+    谷歌代理访问国外网站学习的利器，提供N多代理
+    音乐电台N多高质量音乐网站，触动心灵的音符！
+    影视动画|游戏策划
+    电影|动漫
+    旅游|摄影|体育|户外
+    创意|生活有意思
+
+
+麻烦点个赞好嘛！
+编辑于 2015-06-07 添加评论 感谢
+收藏 ? 没有帮助 ? ? 作者保留权利
+Sakuya，wubba lubba dub dub
+知乎用户、黎九、phoenix-chen 等人赞同
+只贴上了最近常看的，更多请查看前端收藏夹
+介紹 | 前端开发笔记本
+2015 SegmentFault 前端优秀文章
+
+博客
+TaoBaoUED | 做地球上最好的 UED
+张鑫旭-鑫空间-鑫生活
+卖烧烤夫斯基
+winter-cn - 博客园
+JerryQu 的小站
+草根程序猿 - 博客园
+阮一峰的网络日志
+ECMAScript 6入门
+TGideas-腾讯游戏官方设计团队
+Web前端 腾讯AlloyTeam Blog
+Home - 廖雪峰的官方网站
+
+网站
+Web前端 腾讯IMWeb 团队社区
+Web 技术文档
+w3school 在线教程
+W3CPlus | css3教程-css3实例-css3动画
+前端网（W3Cfuns）
+WEB前端 - 伯乐在线
+Web 技术文档
+SegmentFault
+InfoQ - 促进软件开发领域知识与创新的传播
+Leanote (记笔记)
+
+设计
+SDC设计师网址导航
+优设-UISDC: 优秀网页设计联盟-SDC-网页设计师交流平台
+
+其他
+Google网页载入速度性能检测
+https://developers.google.com/speed/pagespeed/insights/
+检测网页耗费流量
+What Does My Site Cost?
+检测当前浏览器支持的特性
+Cow tests
+
+作者：学习网站收集控
+链接：http://www.zhihu.com/question/22759296/answer/31737189
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+前端工具：
+can i see :http://caniuse.com/  ——一个查看css及html5在各个浏览器及手机端的支持情况
+
+前端视野：——平时可以多看看的网站了解下最新资讯
+前端观察站，腾讯的前端技术，挺有含金量：
+html5 中国：   http://www.html5cn.org/   ——有很多html及css小知识的网站，建议多浏览
+web前端开发   http://www.css88.com/
+前端乱炖         http://www.html-js.com/
+博客园里面牛人不少。   http://www.cnblogs.com/
+csdn  .net 程序员   http://www.csdn.net/
+
+
+
+
+html5及css3:
+Adobe出的，Adobe其实是html5非常忠实的拥抱者。官方社区有非常多的html5资源 http://beta.theexpressiveweb.com/
+html5和css3开发，还是Adobe http://www.adobe.com/cn/devnet/html5.html
+MDN，mozilla官方出品的HTML5资料库，我认为是地球上最好的前端资料库 https://developer.mozilla.org/zh-CN/
+css3参考手册在线版，很全 http://css.doyoe.com/
+
+
+网页设计：
+黄蜂网（上面的效果真是不能更炫了）：http://www.woofeng.cn/
+站酷 (ZCOOL) - 设计师互动平 http://www.zcool.com.cn/
+
+CSS3媒体查询（Media Query）
+css3媒体查询官方文档 http://www.w3.org/TR/css3-mediaqueries/
+css3媒体查询官方中文文档 http://www.w3.org/html/ig/zh/wiki/CSS3%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2
+前端观察站的文章 http://www.qianduan.net/media-type-and-media-query.html
+
+
+CSS3弹性盒模型（伸缩盒）
+使用CSS弹性盒MDN https://developer.mozilla.org/zh-CN/docs/CSS/Tutorials/Using_CSS_flexible_boxes
+官方的CSS弹性盒模型 http://www.w3.org/html/ig/zh/wiki/Css3-flexbox/zh-hans
+
+
+viewport与设备自适应
+CSS Device Adaptation官方文档 http://dev.w3.org/csswg/css-device-adapt/#the-atviewport-rule
+ATA技术社区，viewport笔记 http://www.atatech.org/article/detail/12233/786
+
+
+CSS3动画
+CSS3 Animation http://www.w3cplus.com/content/css3-animation
+CSS3动画在线测试工具（腾讯团队弄的）http://ecd.tencent.com/css3/tools.html
+CSS3 Transitions, Transforms和Animation使用简介与应用展示 http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms%E5%92%8Canimation%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%BA%94%E7%94%A8%E5%B1%95%E7%A4%BA/
+
+
+JavaScript性能优化
+Javascript高性能动画与页面渲染 http://www.infoq.com/cn/articles/javascript-high-performance-animation-and-page-rendering
+前端工程打开速度优化的循序渐进总结 http://www.cnblogs.com/zhengyun_ustc/archive/2013/05/09/frontendoptimize.html
+
+
+用户体验
+
+DIVCSS5 - DIV+CSS布局教程学习与CSS资源分享平台 http://www.divcss5.com/
+FEX 做最专业的前端 http://fex.baidu.com/
+GMU - mobile UI http://gmu.baidu.com/
+IXDC－国际体验设计协会 | 引领中国交互设计行业发展 http://ixdc.org/
+UEhtml设计师交流平台 网页设计 界面设计 http://www.uehtml.com/
+UI设计_UI_UI设计师-Uimaker-专注UI设计 http://www.uimaker.com/
+UI中国-专业界面设计平台 www.ui.cn/
+畅游视觉设计中心 http://vc.changyou.com/
+
+
+工具类
+
+在线工具 —— 开源中国社区 view-source:http://tool.oschina.net/
+Placehold.it-图片占位符 http://placehold.it/
+CSS 图片拼合生成器-css_sprite http://cn.spritegen.website-performance.org/
+　　
+
+阿里
+Iconfont-阿里巴巴矢量图标库 http://iconfont.cn/
+阿里巴巴（中国站）用户体验设计部博客 http://www.aliued.cn/
+TaoBaoUED | 做地球上最好的 UED http://ued.taobao.org/blog/
+一淘-UX-用户体验中心 http://ued.alimama.com/
+　　
+
+百度
+百度MUX http://mux.baidu.com/
+百度搜索用户体验中心 | 创建搜索引擎的极致用户体验 http://vc.changyou.com/index.shtml
+　　
+
+腾讯
+
+TGideas-腾讯游戏官方设计团队 http://tgideas.qq.com/
+腾讯CDC http://cdc.tencent.com/
+腾讯ecd – 电商用户体验设计部 E-Commerce User Experience http://ecd.tencent.com/
+腾讯ISUX – 社交用户体验设计 – Better Experience Through Design http://isux.tencent.com/
+腾讯MXD移动互联网设计中心 http://mxd.tencent.com/
+腾讯alloyteam http://www.alloyteam.com/
+
+
+网易
+
+网易用户体验设计中心 http://uedc.163.com/
+网易nec-更好的CSS样式解决方案 http://nec.netease.com/
+　　
+
+新浪
+
+新浪UED | 一个关注用户体验、关注工作流、关注作品质量的有爱团队 http://ued.sina.com/
+微博UDC | 让设计无“微”不至 http://udc.weibo.com/
+　　
+强烈推荐的博客！
+
+张鑫旭的个人博客_web前端技术文章 http://www.zhangxinxu.com/wordpress/ （让我学到了很多很多）
+海玉 http://www.hicss.net/
+
+http://whycss.com/   这个网站罗列了很多前端网站，可以进去看看，
+
+优设-UISDC: 优秀网页设计联盟-SDC-网页设计师交流平台-听讲座，聊设计，找素材，尽在优设网 http://www.uisdc.com/ 

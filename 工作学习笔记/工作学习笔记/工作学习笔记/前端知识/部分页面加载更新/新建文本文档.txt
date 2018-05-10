@@ -1,0 +1,4 @@
+setInterval(function() {   //每隔5秒钟刷新页面内容
+      //获取的内容将增加到 id为content的元素后
+     $("#content").load(url);
+ }, 5000);

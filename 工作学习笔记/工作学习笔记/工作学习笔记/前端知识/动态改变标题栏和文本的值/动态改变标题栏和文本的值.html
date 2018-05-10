@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE">
+    <title>四川家具专区</title>
+    <!--banner-->
+    <!--[if lt IE 9]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+    <!--左侧导航-->
+    <link type="" rel="stylesheet" href="ie-css3.htc">
+    <style>
+      .about_Right span{    padding-bottom: 10px;}
+        .bg{border-bottom: 3px solid #12aea2;}
+    </style>
+</head>
+<body>
+
+  <!---------------------------相关阅读--------------------->
+  <div class="about_Reading">
+      <div class="about_Right" >
+          <span class="bg">世界动态</span>
+          <span>市场行情</span>
+          <span>家具人物</span>
+          <span>环球家具</span>
+      </div>
+  </div>
+  <hr>
+  <div class="box">
+      <div class="showText" style="display: block">
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择自我选平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+
+      </div>
+      <div class="showText" style="display: none">
+          <p><span class="showTextLeft">腾讯时间阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择自我选平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+
+      </div>
+      <div class="showText" style="display: none">
+          <p><span class="showTextLeft">百度谷歌读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择自我选平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+
+      </div>
+      <div class="showText" style="display: none">
+          <p><span class="showTextLeft">阿里巴巴阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择自我选平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+          <p><span class="showTextLeft">平安推荐阅读的冷思考――自我选择冷思考平安推荐阅读的冷思考――自我选择冷思考</span> <span class="showTextRight">2分钟前</span></p>
+
+      </div>
+  </div>
+</body>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="ie_supportPlaceholder.js"></script>
+<script>
+   $(".about_Right span").click(function(i){
+         var i=($(this).index())
+          $(this).addClass("bg").siblings().removeClass("bg")
+          $(".showText:eq("+i+")").css("display","block").siblings().css("display","none")
+      })
+</script>
+</html>

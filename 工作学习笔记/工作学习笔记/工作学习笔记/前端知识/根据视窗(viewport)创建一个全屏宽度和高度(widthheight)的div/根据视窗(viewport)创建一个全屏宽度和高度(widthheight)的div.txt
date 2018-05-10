@@ -1,0 +1,12 @@
+$('#content').css({
+    'width': $(window).width(),
+    'height': $(window).height(),
+});
+// make sure div stays full width/height on resize
+$(window).resize(function(){
+    var $w = $(window);
+    $('#content').css({
+      'width': $w.width(),
+      'height': $w.height(),
+    });
+});

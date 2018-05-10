@@ -1,0 +1,36 @@
+.content-wrap {
+    padding: 0;
+}
+.content-wrap > h5 {
+    text-align: center;
+    color: #ffffff;
+    background-color: #0881b1;
+    margin: 0;
+    padding: 6px;
+    font-weight: bolder;
+}
+.record-review-submit button {
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+.record-review-submit button:nth-child(1) {
+    margin-right: 35px;
+}
+.record-review-wrap {
+    clear: both;
+}
+.text-color {
+    color:#33B5E9;
+}
+.record-review-wrap table th {
+    text-align: center;
+}
+/*
+body > div > div {
+    position: relative;
+}
+.page-query {
+    position: absolute;
+    bottom: 0;
+}*/
