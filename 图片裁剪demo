@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/jquery-jcrop/2.0.4/css/Jcrop.min.css">
+</head>
+
+<body>
+    <!-- 裁剪效果需要在服务器上才能看到 -->
+    
+    <img id="element_id" src="./draw2.png" style="width:100px;height:100px">
+
+    <button onclick="preview()">预览</button>
+    <button onclick="send()">上传</button>
+
+    <img src="/" id="pic"></img>
+    <canvas id="canvasId" style="display: none"></canvas>
+    <script src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/jquery-jcrop/2.0.4/js/Jcrop.min.js"></script>
+    <script>
+        var imgData = null;
+        var imgSrc;
+        $('#element_id').Jcrop({
+            allowSelect: true,
+            baseClass: 'jcrop',
+            onChange: function (e) {
+                imgData = e;
+                console.log(e);
+            }
+        }, function () {
+            // jcropApi = this;
+            console.log(this);
+        });
+        //预览图片
+        function preview() {
+            drawPic()
+        }
+        function drawPic() {
+            if (!imgData) {
+                alert("请先裁剪"); return;
+            }
+            let canvas1 = $(".jcrop-active canvas")[0];
+            let ctx1 = canvas1.getContext("2d")
+
+
+            var canvas = document.getElementById("canvasId");
+            var ctx = canvas.getContext("2d");
+
+            var imginfo = ctx1.getImageData(imgData.x, imgData.y, imgData.w, imgData.h);
+            canvas.width = imgData.w
+            canvas.height = imgData.h
+            ctx.putImageData(imginfo, 0, 0);
+            console.log(ctx);
+
+            imgSrc = canvas.toDataURL("image/png");
+            //  console.log(imgSrc);
+            $("#pic").attr("src", imgSrc);
+
+        }
+
+        //上传图片
+        function send() {
+            drawPic();
+            var xmlhttp;
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                   console.log(xhr.responseText);
+                }
+            }
+            xmlhttp.open("GET", "https://dev.api.xksquare.com/api/sys/mam/qosstoken/1.0", true);
+            xmlhttp.send();
+        }
+    </script>
+</body>
+
+</html>
