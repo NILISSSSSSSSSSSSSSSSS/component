@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <input type="file" onchange="press(this)" id="file">
+
+    <img src="/" id="pic" onload="loadPic(this)"></img>
+    <img src="/" id="lastPic" ></img>
+    <canvas id="canvasId" style="display: none"></canvas>
+    <script src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+
+    <script>
+        function press(e) {
+            //检验是否为图像文件 
+            var file = document.getElementById("file").files[0];
+            if (!/image\/\w+/.test(file.type)) {
+                alert("看清楚，这个需要图片！");
+                return false;
+            }
+            var reader = new FileReader();
+            //将文件以Data URL形式读入页面 
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                console.log(this);
+                $("#pic").attr("src",this.result)
+            }
+        }
+        let picUrl=null;
+       function loadPic($this){
+            var canvas = document.getElementById("canvasId");
+            var ctx = canvas.getContext("2d");
+           
+            canvas.width = $this.width
+            canvas.height = $this.height
+            ctx.drawImage($this,0,0,$this.width,$this.height);
+            
+
+           picUrl= canvas.toDataURL("image/jpeg",0.1);
+           $("#pic").hide();
+           $("#lastPic").attr("src",picUrl)
+        }
+       
+    </script>
+</body>
+
+</html>
