@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ueditor demo </title>
+</head>
+
+<body>
+    <div id="container" style="width:700px"></div>
+    <input type="file" id="fileInput" onchange="changePic()">
+    <button onclick="getCon()">提交</button>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="ueditor.all.js"></script>
+    <script src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        var tempHtml = null;
+        // <!-- 实例化编辑器 -->
+        var ue = UE.getEditor('container');
+
+
+        // 插入图片
+        $('body').on("click", '#edui148', function () {
+            $("#fileInput").click()
+        })
+
+        function changePic() {
+            var file = document.getElementById("fileInput").files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file);//发起异步请求
+            reader.onload = function (e) {
+                ue.execCommand('insertimage', {
+                    src: this.result,
+                    width: '100',
+                    height: '100'
+                });
+            }
+        }
+
+        function getCon() {
+            var html = ue.getContent();
+            console.log(html);
+        }
+    </script>
+</body>
+<style>
+    #edui1_iframeholder {
+        height: 584px;
+    }
+</style>
+
+</html>
