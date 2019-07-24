@@ -1,22 +1,19 @@
 <template>
-    <div class="xk-um">
+    <div class="xk-um" :id="randomId">
         <div :id="editor" class="editor" :style="UEheight"></div>
-        <image-upload v-if="isShow" :isShow.sync="isShow" v-model="picUrl" :more="false" v-show="hidden">
-            <span style="display: none" id="uploadImg"></span>
+        <image-upload v-if="isShow" :isShow.sync="isShow" v-model="picUrl" :more="false" :accept="accept">
+            <span style="display: none" :id="uploadImg"></span>
         </image-upload>
     </div>
 </template>
 
 <script>
-
-    // window.UMEDITOR_HOME_URL = process.env.NODE_ENV ==='development' ? '../../static/utf8-php/': '/manage/static/utf8-php/'
-    // require('../../static/utf8-php/umeditor.config.js');
-    // require('../../static/utf8-php/umeditor.min.js');
-
+    
+    window.UMEDITOR_HOME_URL = process.env.NODE_ENV ==='development' ? '../../static/utf8-php/': '/manage/static/utf8-php/'
+    require('../../static/utf8-php/umeditor.config.js');
+    require('../../static/utf8-php/umeditor.min.js');
     import ImageUpload from './ImageUpload.vue';
-    import '../../static/utf8-jsp/ueditor.config.js';
-    import '../../static/utf8-jsp/ueditor.all.min.js';
-    import '../../static/utf8-jsp/lang/zh-cn/zh-cn.js';
+
     export default {
         name: "UE",
         props: {
@@ -38,52 +35,59 @@
                 uedata: '',
                 dialogVisible: false,
                 isShow: true,
-                picUrl: ''
+                picUrl: '',
+                // 修复同时存在两个富文本编辑器时出现的问题
+                randomId: 'randomId' + Math.random().toString(32).substring(2),
+                uploadImg: 'uploadImg' + Math.random().toString(32).substring(2),
+                accept: 'image/*'
             }
         },
         mounted() {
-            this.ue = UE.getEditor(this.editor,{UEDITOR_HOME_URL:'static/utf8-jsp/'});
-            this.getEditor(this.value);
+            this.ue = UM.getEditor(this.editor);
+            this.getEditor();
         },
         methods: {
             // 保存
             submits() {
-                this.uedata = UE.getEditor(this.editor).getContent();
+                this.uedata = UM.getEditor(this.editor).getContent();
+                console.log(this.uedata);
                 this.$emit('input', this.uedata)
             },
-
-            removeClass(ele, cls){
-                if (this.hasClass(ele, cls)) {
-                    let reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-                    ele.className = ele.className.replace(reg, ' ');
-                }
-            },
-            hasClass(ele, cls){
-                return ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
-            },
-            addClass(ele, cls){
-                if (!this.hasClass(ele, cls)) ele.className += " " + cls;
-            },
-
             //写入
             getEditor() {
                 let self = this;
                 this.ue.ready(() => {
-                    this.ue.setContent(this.value);
+                    this.ue.setContent(''+(this.value===null?'':this.value));
                     /*******************重写UEditor上传图片的方法***********************/
-                    let dom = document.getElementsByClassName("edui-for-simpleupload")[0];
-                    let firstChild = dom.firstChild;
-                    this.ue.addListener('afterSelectionChange', () => {
-                        this.removeClass(firstChild, "edui-state-disabled")
+                    let dom = document.getElementById(this.randomId).getElementsByClassName("edui-btn-image")[0];
+                    dom.addEventListener("click", () => {
+                        self.accept = "image/*";
+                        let timer = setTimeout(()=>{
+                            clearTimeout(timer);
+                            $("#"+ self.uploadImg).click();
+                        }, 10)
                     });
-                    dom.setAttribute("onclick", '');
+                    /*********************重写视频上传****************************** */
+                    let videoDom = document.getElementById(this.randomId).getElementsByClassName("edui-btn-video")[0];
+                    videoDom.addEventListener("click", () => {
+                        self.accept = "video/*";
+                        let timer = setTimeout(()=>{
+                            clearTimeout(timer);
+                            $("#"+ self.uploadImg).click();
+                        }, 10)
+                    });
                     this.ue.addListener('blur', (editor) => {
                         this.submits();
                     });
                 })
             },
             insertPic() {
-                this.ue.execCommand(`inserthtml`, `<img src="${this.picUrl}" />`)
+                if(this.picUrl.indexOf('video')=== -1) {
+                    this.ue.execCommand(`inserthtml`, `<img style="vertical-align:top;outline-width:0;max-width:100%" src="${this.picUrl}" />`);
+                }else{
+                    this.ue.execCommand(`inserthtml`, `<p><video controls webkit-playsinline='true' playsinline='true' poster="${this.picUrl+'&vframe/jpg/offset/2'}" style="width: 100%;height: auto;vertical-align:top;outline-width:0" src="${this.picUrl}"></video><br/>&nbsp;</p>`);
+                }
+                this.ue.focus();
                 this.dialogVisible = false;
             }
         },
@@ -94,7 +98,8 @@
         watch: {
             value(val, old) {
                 this.ue.ready(() => {
-                    this.ue.setContent(val);
+                    this.ue.setContent(''+(val===null?'':val));
+                    this.ue.focus(true);
                 });
             },
             picUrl(val, newVal) {
@@ -108,7 +113,7 @@
 </script>
 
 <style lang="scss">
-@import "../../static/utf8-jsp/themes/default/css/ueditor.min.css";
+@import "../../static/utf8-php/themes/default/css/umeditor.min.css";
     .xk-um {
         line-height: 1.5;
         .edui-editor-body {
@@ -117,15 +122,23 @@
         .editor {
             position: relative;
             width: 100%;
+            /* height: 400px; */
         }
 
         .edui-default .edui-box {
             height: 20px;
         }
+        /* .edui-dialog-container {
+            display: none;
+        } */
+
         .submitBtn {
             background-color: red;
             margin-top: 116px;
         }
+        img {
+            max-width: 100%;
+        }
     }
-
+    
 </style>
