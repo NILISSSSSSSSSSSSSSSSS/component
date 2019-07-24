@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="umeditor.min.js"></script>
+    <!--添加按钮-->
+    <!-- <script type="text/javascript" charset="utf-8" src="addCustomizeButton.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/element-ui/2.4.1/theme-chalk/index.css">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/element-ui/2.4.1/index.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <script type="text/plain" id="container" style="width:1000px;height:540px;">
+        </script>
+        <input type="file" id="fileInput" :accept="accept" @change="changePic()">
+        <button @click="getCon">提交</button>
+    </div>
+
+    <script type="text/javascript">
+        var tempHtml = null;
+        let self = null;
+        new Vue({
+            el: '#app',
+            data: {
+                um: "",
+                accept: ""
+            },
+            mounted() {
+                self = this;
+                // <!-- 实例化编辑器 -->
+                this.um = UM.getEditor('container');
+                this.um.ready(() => {
+                    // 插入图片
+                    let domImg = document.getElementById("app").getElementsByClassName("edui-btn-image")[0];
+                    domImg.addEventListener("click", function() {
+                            self.accept = 'image/*'
+                            $("#fileInput").click()
+                        })
+                        // 插入视频
+                    let domVideo = document.getElementById("app").getElementsByClassName("edui-btn-video")[0];
+                    domVideo.addEventListener("click", function() {
+                        self.accept = 'video/*'
+                        $("#fileInput").click()
+                    })
+
+                });
+            },
+            methods: {
+                changePic() {
+                    var file = document.getElementById("fileInput").files[0];
+                    if (self.accept == 'video/*') {
+                        var url = URL.createObjectURL(file);
+                        window.setTimeout(setContent, 1000); //一秒后再调用赋值方法
+                        function setContent() {
+                            self.um.execCommand(`inserthtml`, `<p><video controls webkit-playsinline='true' playsinline='true' src="${url}" style="width: 100%;height: auto;vertical-align:top;outline-width:0" ></video>&nbsp;</p>`);
+                        }
+
+                    } else {
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function(evt) {
+                            self.um.execCommand('insertimage', {
+                                src: this.result,
+                                width: '100',
+                                height: '100'
+                            });
+                        }
+
+                    }
+                    self.um.focus();
+                },
+                getCon() {
+                    var html = self.um.getContent();
+                    console.log(html);
+                }
+            },
+        })
+    </script>
+</body>
+<style>
+    #edui1_iframeholder {
+        height: 584px;
+    }
+</style>
+
+</html>
