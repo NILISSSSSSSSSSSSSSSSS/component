@@ -3,47 +3,82 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ueditor demo </title>
+    <link href="themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="umeditor.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/element-ui/2.4.1/theme-chalk/index.css">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/element-ui/2.4.1/index.js"></script>
+
 </head>
 
 <body>
-    <div id="container" style="width:700px"></div>
-    <input type="file" id="fileInput" onchange="changePic()">
-    <button onclick="getCon()">提交</button>
-    <!-- 配置文件 -->
-    <script type="text/javascript" src="ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="ueditor.all.js"></script>
-    <script src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <div id="app">
+        <script type="text/plain" id="container" style="width:1000px;height:540px;">
+        </script>
+        <input type="file" id="fileInput" :accept="accept" @change="changePic()">
+        <button @click="getCon">提交</button>
+    </div>
+    <p>
+        <span>222</span>
+    </p>
 
     <script type="text/javascript">
         var tempHtml = null;
-        // <!-- 实例化编辑器 -->
-        var ue = UE.getEditor('container');
+        let self = null;
+        new Vue({
+            el: '#app',
+            data: {
+                um: "",
+                accept: ""
+            },
+            mounted() {
+                self = this;
+                // <!-- 实例化编辑器 -->
+                this.um = UM.getEditor('container');
+                this.um.ready(() => {
+                    // 插入图片
+                    let domImg = document.getElementById("app").getElementsByClassName("edui-btn-image")[0];
+                    domImg.addEventListener("click", function() {
+                            self.accept = 'image/*'
+                            $("#fileInput").click()
+                        })
+                        // 插入视频
+                    let domVideo = document.getElementById("app").getElementsByClassName("edui-btn-video")[0];
+                    domVideo.addEventListener("click", function() {
+                        self.accept = 'video/*'
+                        $("#fileInput").click()
+                    })
 
-
-        // 插入图片
-        $('body').on("click", '#edui148', function () {
-            $("#fileInput").click()
-        })
-
-        function changePic() {
-            var file = document.getElementById("fileInput").files[0];
-            var reader = new FileReader();
-            reader.readAsDataURL(file);//发起异步请求
-            reader.onload = function (e) {
-                ue.execCommand('insertimage', {
-                    src: this.result,
-                    width: '100',
-                    height: '100'
                 });
-            }
-        }
+            },
+            methods: {
+                changePic() {
+                    var file = document.getElementById("fileInput").files[0];
+                    if (self.accept == 'video/*') {
+                        var url = URL.createObjectURL(file);
+                        window.setTimeout(setContent, 1000); //一秒后再调用赋值方法
+                        function setContent() {
+                            self.um.execCommand(`inserthtml`, `<p><video controls webkit-playsinline='true' playsinline='true' src="${url}" style="width: 100%;height: auto;vertical-align:top;outline-width:0" ></video>&nbsp;</p>`);
+                        }
 
-        function getCon() {
-            var html = ue.getContent();
-            console.log(html);
-        }
+                    } else {
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function(evt) {
+                            self.um.execCommand(`inserthtml`, `<img style="vertical-align:top;outline-width:0;max-width:100%" src="${this.result}" />`);
+                        }
+
+                    }
+                    self.um.focus();
+                },
+                getCon() {
+                    var html = self.um.getContent();
+                    console.log(html);
+                }
+            },
+        })
     </script>
 </body>
 <style>
