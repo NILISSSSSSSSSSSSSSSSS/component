@@ -1,0 +1,75 @@
+/**
+* Created by zhangmei on 2019/7/29
+*/
+<template>
+    <div class="lm-info">
+        <div class="info-left fl">
+            <h1>
+                <slot name="left">
+                    标题
+                </slot>
+            </h1>
+        </div>
+        <div class="info-right fr">
+            <slot name="right">
+                <custom-button @click.native="infoClick">
+                </custom-button>
+            </slot>
+        </div>
+    </div>
+</template>
+
+<script>
+    import CustomButton from '../components/CustomButton'
+
+    export default {
+        name: "LmInfo",
+        componentName: "LmInfo",
+        components: {
+            CustomButton
+        },
+        data() {
+            return {}
+        },
+        created() {
+        },
+        methods: {
+            infoClick() {
+                this.$emit('info-click');
+            }
+        },
+        computed: {},
+
+    }
+</script>
+
+<style scoped lang="scss" type="text/scss">
+    .lm-info {
+        height: 40px;
+        line-height: 40px;
+        .info-left {
+            h1 {
+                font-size: 20px;
+                color: #3B4859;
+                font-weight:600
+                }
+            padding-left: 40px;
+            height: 100%;
+            position: relative;
+            &::before {
+                content: '';
+                width: 8px;
+                height: 24px;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                position: absolute;
+                   background: linear-gradient(360deg,rgba(129,140,253,1) 0%,rgba(74,144,250,1) 100%);
+                }
+            }
+        .info-right {
+            cursor: pointer;
+            height: 100%;
+            }
+        }
+</style>
