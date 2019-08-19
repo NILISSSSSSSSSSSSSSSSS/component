@@ -1,0 +1,270 @@
+<template>
+    <div class="line">
+        <template v-if="echartData.length!==0">
+            <div :id="echartID" style="width: 100%;height: 390px"></div>
+        </template>
+        <template v-else>
+            <div class="noData">暂无数据</div>
+        </template>
+    </div>
+</template>
+
+<script>
+import echarts from "echarts";
+
+export default {
+    props: {
+        echartData: {
+            //图表数据
+            default: () => {
+                return [];
+            }
+        },
+        type: {
+            //那个类型
+            default: ""
+        }
+    },
+    watch: {
+        echartData: {
+            immediate: true,
+            handler(val) {
+                if (val.length !== 0) {
+                    this.$nextTick(function () {
+                        this.cc();
+                    });
+                } else {
+                    //销毁echart
+                    this.myChart ? this.myChart.dispose() : "";
+                }
+            }
+        },
+        type: {
+            immediate: true,
+            handler(val) {
+                if (val) {
+                    this.$nextTick(function () {
+                        this.cc();
+                    });
+                }
+            }
+        }
+    },
+    data() {
+        return {
+            myChart: "",
+            echartID: "line" + parseInt(Math.random() * 1000),
+            xData: [],
+            yData1: [], //已完成数据
+            yData2: [], //已关闭数据
+            bgColor1: "",
+            bgColor2: "",
+            borderColor: "",
+        };
+    },
+    mounted() {
+        window.addEventListener("resize", () => {
+            if (this.myChart) {
+                this.myChart.resize();
+            }
+        });
+    },
+    methods: {
+        cc() {
+            let val = this.echartData;
+            this.xData = val.map(cc => cc.date);
+            if (this.type == "orderNum") {
+                //订单数据
+                [this.yData1, this.yData2, this.name,this.bgColor1,this.bgColor2,this.borderColor] = [
+                    val.map(cc => cc.completelyNum),
+                    val.map(cc => cc.closeNum),
+                    "订单数量",'rgba(129,140,253,0.6)','rgba(74,144,250,0.01)','#568ffb'
+                ];
+            }
+            if (this.type == "orderMoney") {
+                //订单金额数据
+                [this.yData1, this.yData2, this.name,this.bgColor1,this.bgColor2,this.borderColor] = [
+                    val.map(cc => cc.completelyTotalMoney),
+                    val.map(cc => cc.closeTotalMoney),
+                    "订单金额",'rgba(44,159,248,0.6)','rgba(42,195,214,0.01)','#2ea8f2'
+                ];
+            }
+            if (this.type == "customerNum") {
+                //客户数量
+                [this.yData1, this.yData2, this.name,this.bgColor1,this.bgColor2,this.borderColor] = [
+                    val.map(cc => cc.completelyUserNum),
+                    val.map(cc => cc.closeUserNum),
+                    "客户数量",'rgba(255,126,0,0.6)','rgba(255,152,52,0.01)','#ff8309'
+                ];
+            }
+            if (this.type == "orderPrice") {
+                //订单均价
+                [this.yData1, this.yData2, this.name,this.bgColor1,this.bgColor2,this.borderColor] = [
+                    val.map(cc => cc.completelyAveragePrice),
+                    val.map(cc => cc.closeAveragePrice),
+                    "订单均价",'rgba(180,236,81,0.6)','rgba(66,147,33,0.01)','#5ca72f'
+                ];
+            }
+            // this.type == "orderNum" ? [this.yData1, this.yData2, this.name] = [val.map(cc => cc.completelyNum), val.map(cc => cc.closeNum), '订单数量'] : [this.yData1, this.yData2, this.name] = [val.map(cc => cc.completelyTotalMoney), val.map(cc => cc.closeTotalMoney), "订单金额"]
+            this.setData();
+        },
+        setData() {
+            let idBox = document.getElementById(this.echartID);
+            //如果dom还没加载处理，则返回
+            if (idBox == null || !idBox) {
+                return;
+            }
+            this.myChart = echarts.init(idBox);
+            this.options = {
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: ["已完成", "已关闭"]
+                },
+                //直角坐标系内绘图网格
+                grid: {
+                    show: true,
+                    top: "35px",
+                    left: "60px",
+                    right: "50px",
+                    bottom: "30px",
+                    containLabel: false,
+                    borderWidth: 0
+                },
+                xAxis: {
+                    name: "时间",
+                    type: "category",
+                    boundaryGap: false,
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: "#b9c4d6"
+                        }
+                    },
+                    data: this.xData
+                },
+                yAxis: {
+                    name: this.name,
+                    type: "value",
+                    axisLabel: {
+                        formatter: "{value}"
+                    },
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: "#b9c4d6"
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            type: "dashed",
+                            color: "#e8e6f1"
+                        }
+                    }
+                },
+                backgroundColor: "#ffffff",
+                series: [
+                    {
+                        smooth: true,
+                        name: "已完成",
+                        type: "line",
+                        data: this.yData1,
+                        // 区域填充样式。
+                        areaStyle: {
+                            normal: {
+                                color: {
+                                    type: "linear",
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [
+                                        {
+                                            offset: 0,
+                                            color: this.bgColor1 // 0% 处的颜色
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: this.bgColor2 // 100% 处的颜色
+                                        }
+                                    ],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color:this.borderColor,
+                                width: 1
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#1ca1fe",
+                                borderColor: "#1ca1fe",
+                                borderWidth: 4
+                            }
+                        }
+                    },
+                    {
+                        smooth: true,
+                        name: "已关闭",
+                        type: "line",
+                        data: this.yData2,
+                        // 区域填充样式。
+                        areaStyle: {
+                            normal: {
+                                color: {
+                                    type: "linear",
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [
+                                        {
+                                            offset: 0,
+                                            color: this.bgColor1 // 0% 处的颜色
+                                        },
+                                        {
+                                            offset: 1,
+                                            color:this.bgColor2 // 100% 处的颜色
+                                        }
+                                    ],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color:this.borderColor,
+                                width: 2
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#1ca1fe",
+                                borderColor: "#1ca1fe",
+                                borderWidth: 4,
+
+                            }
+                        }
+                    }
+                ]
+            };
+            this.myChart.setOption(this.options);
+        }
+    }
+};
+</script>
+<style scoped>
+.noData {
+    line-height: 400px;
+    text-align: center;
+    font-size: 15px;
+}
+</style>
