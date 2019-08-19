@@ -15,11 +15,8 @@
                 phone: "",
                 bizType: "",
                 shopId: "",
-                isDisabled: {
-                    type: Boolean,
-                    default: false
-                },
-                closeVertify: false,
+                isDisabled: false,//时候能点击
+                closeVertify: false,//用于外面的弹框关闭后关闭验证码，代替方法：组件外面用v-if="弹框dialogo"写法，v-if可以重新渲染验证码组件，如果为false就会自动调用 destroyed方法
             },
         },
         watch: {
@@ -36,6 +33,9 @@
                 getCodeButton: "发送验证码",
             }
         },
+         destroyed() {
+            this._countOver();
+          },
         methods: {
             destroyed() {
                 this._countOver();
@@ -64,7 +64,6 @@
                 console.log(data)
                 this.$http.post(this.$api.sendAuthMessage, data, true)
                     .then((res) => {
-
                         this.$message.success("验证码发送成功");
                         this._countDown();
 
@@ -82,7 +81,7 @@
                     if (second < 1) {
                         this._countOver();
                     }
-                }, 500);
+                }, 1000);
             },
             _countOver() {
                 this.vertifyBox.isDisabled = false;
