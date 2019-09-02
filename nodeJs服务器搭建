@@ -1,0 +1,14 @@
+const express = require('express');
+var proxy = require('http-proxy-middleware');
+const app= express();
+
+app.use(express.static('www'));
+// 配置代理
+app.use('/api', proxy({
+    target: 'https://dev.api.xksquare.com',
+    changeOrigin: true
+}));
+
+app.listen(8083, ()=>{
+    console.log('Server is running at http://localhost:8083')
+})
