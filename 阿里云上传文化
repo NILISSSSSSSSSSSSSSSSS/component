@@ -1,0 +1,25 @@
+  import OSS from 'ali-oss'  
+ <input type="file" id="file" @change="getFile()">
+  getFile() {
+        let fil = document.getElementById("file").files[0];
+        let client = new OSS({
+          region: 'oss-cn-chengdu',
+          accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
+          accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+          bucket: 'gln11',
+        });
+        // 上传文件
+        client.put(getUUID(fil.name), fil).then((res) => {
+          console.log(res);
+        });
+        //设置文件名字
+        function getUUID(filename) {
+          var mydate = new Date();
+          var random = Math.floor(Math.random() * 900) + 100;
+          var uuid = "file" + mydate.getDay() + mydate.getHours() + mydate.getMinutes() + mydate.getSeconds() + mydate.getMilliseconds() + random;
+          //文件扩展名
+          var index = filename.lastIndexOf(".");
+          var suffix = filename.substr(index);
+          return uuid + suffix;
+        }
+      },
