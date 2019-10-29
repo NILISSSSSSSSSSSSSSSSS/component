@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="vue_det">
+    <!-- <button >获取凭证</button> -->
+    <input type="file" @change="sendFile" id="file" >
+    <img v-show="imgUrl" :src="imgUrl" alt="" style="width:100px;height:100px">
+  </div>
+
+</body>
+<script src="https://unpkg.com/qiniu-js@2.5.5/dist/qiniu.min.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.5.16/vue.js"></script>
+<script src="https://cdn.staticfile.org/vuex/3.0.1/vuex.min.js"></script>
+<script src="https://cdn.staticfile.org/vue-router/3.0.1/vue-router.min.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#vue_det',
+    data: {
+      imgUrl:""
+    },
+    methods: {
+      sendFile() {
+        let fil = document.getElementById("file").files[0];
+        console.log(fil.name);
+        let that=this;
+        axios
+          .get('/getToken')
+          .then(res => {
+            console.log("获取到的密钥密钥" + res.data);
+            let putExtra = {
+              params: {},
+            };
+            //调用七牛云方法上传
+            var observable = qiniu.upload(fil,that.getUUID(fil.name), res.data, putExtra, {})
+            // 上传回调函数
+            var subscription = observable.subscribe({
+              complete(res) {
+                console.log("上传完成url:" + 'http://q02w1sn6o.bkt.clouddn.com/'+res.key);
+                that.imgUrl='http://q02w1sn6o.bkt.clouddn.com/'+res.key;
+              }
+            }) 
+
+          })
+          .catch(function (error) { // 请求失败处理
+            console.log(error);
+          });
+      },
+      getUUID(filename){
+          var mydate = new Date();
+          var random = Math.floor(Math.random() * 900) + 100;
+          var uuid = "file" + mydate.getDay() + mydate.getHours() + mydate.getMinutes() + mydate.getSeconds() + mydate.getMilliseconds() + random;
+          //文件扩展名
+          var index = filename.lastIndexOf(".");
+          var suffix = filename.substr(index);
+          return uuid + suffix;
+        }
+
+    }
+  })
+</script>
+
+</html>
