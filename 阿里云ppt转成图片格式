@@ -1,0 +1,68 @@
+const express = require('express');
+const app = express();
+const { RPCClient } = require('@alicloud/pop-core');
+
+app.use(express.static('www'));
+
+
+app.get("/pptFormat", (request, response) => {
+  var client = new RPCClient({
+    endpoint: 'https://imm.cn-beijing.aliyuncs.com',
+    accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
+    accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+    apiVersion: '2017-09-06'
+  });
+  try {
+    var params = {
+      Project: "media2",
+      SrcUri: "oss://gln22/test.pptx",
+      TgtType: "jpg",
+      TgtUri: "oss://gln22/output/" + new Date().getTime()
+    };
+    client.request("CreateOfficeConversionTask", params).then(res => {
+      console.log('任务转换' + JSON.stringify(res));
+      let TaskId = res.TaskId;
+      //查询状态
+      getOfficeConversionTask("media2", TaskId,response)
+
+    }).catch(err => {
+      console.log(err);
+    })
+  } catch (err) {
+    console.log(err);
+  }
+})
+
+
+// 查询文档转换任务状态
+async function getOfficeConversionTask(project, taskId,response) {
+  var client = new RPCClient({
+    endpoint: 'http://imm.cn-beijing.aliyuncs.com',
+    accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
+    accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+    apiVersion: '2017-09-06'
+  });
+  try {
+    var params = {
+      Project: project,
+      TaskId: taskId
+    };
+    var result = await client.request("GetOfficeConversionTask", params);
+    console.log('查询到的任务状态：' + JSON.stringify(result));
+    if (result.Status == 'Finished') {
+      console.log("任务转换完成");
+      response.json(result)
+    }
+    else{
+      getOfficeConversionTask(project, taskId,response)
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+app.listen(8083, () => {
+  console.log('Server is running at http://localhost:8083')
+})
