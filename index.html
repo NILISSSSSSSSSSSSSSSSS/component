@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="vue_det">
+    微信授权后的信息： 昵称:{{obj.nickname}} 头像 : <img :src="obj.headimgurl" alt=""> ：地区：{{ obj.province+obj.city}}
+
+  </div>
+
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.5.16/vue.js"></script>
+<script src="https://cdn.staticfile.org/vuex/3.0.1/vuex.min.js"></script>
+<script src="https://cdn.staticfile.org/vue-router/3.0.1/vue-router.min.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+  that = null;
+  var vm = new Vue({
+    el: '#vue_det',
+    data: {
+      imgBox: [],
+      code: '',
+      obj: {}
+    },
+    async mounted() {
+      let par = await this.getSignatureaa();
+      // alert('获取的签名信息：' + JSON.stringify(par));
+      wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: par.appId, // 必填，公众号的唯一标识
+        timestamp: par.timestamp, // 必填，生成签名的时间戳
+        nonceStr: par.nonceStr, // 必填，生成签名的随机串
+        signature: par.signature,// 必填，签名
+        jsApiList: ['scanQRCode'] // 必填，需要使用的JS接口列表
+      });
+      wx.ready(function () {
+        wx.scanQRCode({
+          needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+          scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+          success: function (res) {
+            var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+          }
+        });
+      });
+
+    },
+
+    methods: {
+      // 授权获取用户信息
+      login() {
+        this.code = this.queryParam("code");
+        let url = window.location.href;
+        if (!this.code) {
+          window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8e6e3a875d841741&redirect_uri=${url}&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect`
+        }
+        else {
+          // 获取微信用户信息
+          axios
+            .get(`/wxlogin?code=${this.code}`)
+            .then(res => {
+              console.log(res);
+              this.obj = res.data;
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+
+            });
+        }
+      },
+      queryParam(key) {
+        let obj = this.getUrlParam();
+        return obj[key];
+      },
+      getUrlParam() {
+        let url = location.search; //获取url中"?"符后的字符串包括‘？’ ，window.location.href获取的是url完整的字符串
+        let theParam = new Object();
+        if (url.indexOf("?") != -1) { //确保‘？’不是最后一个字符串，即携带的参数不为空
+          let str = url.substr(1); //substr是字符串的用法之一，抽取指定字符的数目，这里抽取？后的所有字符
+          let strs = str.split("&"); //将获取到的字符串从&分割，输出参数数组，即输出[参数1=xx,参数2=xx,参数3=xx,...]的数组形式
+          for (let i = 0; i < strs.length; i++) { //遍历参数数组
+            theParam[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]); //这里意思是抽取每个参数等号后面的值，unescape是解码的意思
+          }
+        }
+        return theParam; //返回参数值
+      },
+
+
+      //获取签名
+      getSignatureaa() {
+        return new Promise((resolve, reject) => {
+          axios
+            .get('/getSignature')
+            .then(res => {
+              console.log(res.data);
+              resolve(res.data)
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+              reject(error)
+            });
+        })
+      }
+    }
+  })
+</script>
+
+</html>
