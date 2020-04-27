@@ -1,0 +1,8 @@
+ <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item v-for="item in breadList" :key="item.name">{{item.meta.title}}</el-breadcrumb-item>
+      </el-breadcrumb>
+      
+      getBreadcrumb () {
+      const matched = this.$route.matched
+      this.breadList = matched
+    },
