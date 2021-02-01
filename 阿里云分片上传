@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://gosspublic.alicdn.com/aliyun-oss-sdk-6.13.2.min.js"></script>
+</head>
+
+<body>
+  <input type="file" onchange="send()">
+  <p>上传进度</p>
+  <script>
+    function send() {
+      const file = window.event.target.files[0]
+      const fileName = `file/${(new Date().getTime() + '').split("").reverse().join("")}`;
+      const client = new OSS({
+        region: 'oss-cn-beijing',
+        accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
+        accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+        bucket: 'gln22',
+      });
+      const progress = (p, _checkpoint) => {
+        if (p === 1) {
+          document.querySelector("p").innerHTML = `上传成功`
+        }
+        else {
+          document.querySelector("p").innerHTML = `上传进度${p * 100}%`
+        }
+      }
+      // 开始分片上传。
+      async function multipartUpload() {
+        try {
+          // object-name可以定义为文件名（例如file.txt）或目录（例如abc/test/file.txt）的形式，实现将文件上传至Bucket根目录或Bucket下的指定目录。
+          const result = await client.multipartUpload(fileName, file, {
+            progress,
+            // meta是用户自定义的元数据，通过head接口可以获取到Object的meta数据。
+            meta: {
+              year: 2020,
+              people: 'test',
+            },
+          });
+          console.log(result);
+          const head = await client.head(fileName);
+          console.log(head);
+        } catch (e) {
+          // 捕获超时异常。
+          if (e.code === 'ConnectionTimeoutError') {
+            console.log('TimeoutError');
+            // do ConnectionTimeoutError operation
+          }
+          console.log(e);
+        }
+      }
+      multipartUpload();
+    }
+
+  </script>
+</body>
+
+</html>
