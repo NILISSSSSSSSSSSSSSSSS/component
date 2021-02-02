@@ -9,7 +9,7 @@ app.get("/pptFormat", (request, response) => {
   var client = new RPCClient({
     endpoint: 'https://imm.cn-beijing.aliyuncs.com',
     accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
-    accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+       accessKeySecret: '',//安全影响，隐去
     apiVersion: '2017-09-06'
   });
   try {
