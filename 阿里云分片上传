@@ -19,7 +19,7 @@
       const client = new OSS({
         region: 'oss-cn-beijing',
         accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
-        accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+        accessKeySecret: '',//安全影响，隐去
         bucket: 'gln22',
       });
       const progress = (p, _checkpoint) => {
