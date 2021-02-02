@@ -5,7 +5,7 @@
         let client = new OSS({
           region: 'oss-cn-chengdu',
           accessKeyId: 'LTAI4FfSVzopZmyzb2pyeMqa',
-          accessKeySecret: 'CtIa0eZzfj5515pK3D4rbFoFoQW11k',
+          accessKeySecret: '',//安全影响，隐去
           bucket: 'gln11',
         });
         // 上传文件
