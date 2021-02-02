@@ -1,0 +1,51 @@
+var qs = require("querystring");
+const express = require('express');
+var sha1 = require("sha1");
+var request = require("request");
+const app = express();
+app.use(express.static('www'));
+app.listen(8083, () => {
+  console.log('Server is running at http://localhost:8083')
+})
+
+// 短信验证码
+app.get('/getCode', function (req, res, next) {
+  var AppKey = "2024c06b7eb3b61d6ad0362bfce9c7ad"
+  var AppSecret = "755773ef7519";
+  var Nonce = "123456"
+  var CurTime = new Date().getTime() + ''
+  var CheckSum = sha1(AppSecret + Nonce + CurTime);
+
+  var TEMPLATEID = 19476950
+  var MOBILE = "15108214533"
+
+  //这是需要提交的数据
+  var post_data = {
+    templateid: TEMPLATEID,
+    mobile: MOBILE
+  };
+  var content = qs.stringify(post_data);
+  var proxy_url = 'https://api.netease.im/sms/sendcode.action?' + content;
+  var options = {
+    url: proxy_url,
+    method: 'POST',
+    headers: {
+      'AppKey': AppKey,
+      'Nonce': Nonce,
+      'CurTime': CurTime,
+      'CheckSum': CheckSum,
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    }
+  };
+
+  function callback (error, response, body) {
+    account = JSON.parse(body)
+    console.log(account);
+    console.log(account.obj);
+    // return account
+    res.send({ ret_code: '0' });
+  }
+  // console.log(account);
+  request(options, callback);
+
+});
